@@ -10,7 +10,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	ChangeWindowMode(TRUE);
 
 	// ウィンドウのタイトルに表示する文字列
-	const char TITLE[] = "4041";
+	const char TITLE[] = "4041_月面着陸";
 
 	// ウィンドウ横幅
 	const int WIN_WIDTH = 1280;
