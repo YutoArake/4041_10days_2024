@@ -27,12 +27,13 @@ void Player::Draw()
 //移動
 void Player::Move(char keys[256])
 {
+#pragma region 踏ん張る
 	if (keys[KEY_INPUT_UP] == true) {
-		player.Y -= player.Speed;
+		player.Y -= player.MoveSpeed;
 
 		//スクロール加算
 		if (player.Y >= 300 && player.Y <= 2220) {
-			scroll -= player.Speed;
+			scroll -= player.MoveSpeed;
 		}
 
 		//画面から出ないように移動制御
@@ -40,13 +41,15 @@ void Player::Move(char keys[256])
 			player.Y = 0 + player.R;
 		}
 	}
+#pragma endregion 
 
+#pragma region 下にゆっくり
 	if (keys[KEY_INPUT_DOWN] == true) {
-		player.Y += player.Speed;
+		player.Y += player.FallSpeed*2;
 
 		//スクロール加算
-		if(player.Y >= 300 && player.Y <= 2220){
-			scroll += player.Speed;
+		if (player.Y >= 300 && player.Y <= 2220) {
+			scroll += player.FallSpeed*2;
 		}
 
 		//画面から出ないように移動制御
@@ -55,8 +58,24 @@ void Player::Move(char keys[256])
 		}
 	}
 
+	//常にゆっくり落下
+	player.Y += player.FallSpeed;
+
+	//スクロール加算
+	if (player.Y >= 300 && player.Y <= 2220) {
+		scroll += player.FallSpeed;
+	}
+
+	//画面から出ないように移動制御
+	if (player.Y >= 2880 - player.R) {
+		player.Y = 2880 - player.R;
+	}
+
+#pragma endregion 
+	
+#pragma region 左右移動
 	if (keys[KEY_INPUT_LEFT] == true) {
-		player.X -= player.Speed;
+		player.X -= player.MoveSpeed;
 
 		//画面から出ないように移動制御
 		if (player.X <= 0 + player.R) {
@@ -65,14 +84,14 @@ void Player::Move(char keys[256])
 	}
 
 	if (keys[KEY_INPUT_RIGHT] == true) {
-		player.X += player.Speed;
+		player.X += player.MoveSpeed;
 
 		//画面から出ないように移動制御
 		if (player.X >= 1280 - player.R) {
 			player.X = 1280 - player.R;
 		}
 	}
-
+#pragma endregion 
 }
 
 //"scroll"を渡す
