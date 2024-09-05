@@ -7,8 +7,11 @@
 class Meteor : public Object
 {
 private: // メンバ変数
+	
+
 	// 画像データ
 	int meteorGraph;
+	int flameGraph;
 
 public: // メンバ関数
 	/// <summary>
