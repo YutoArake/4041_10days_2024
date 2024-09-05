@@ -13,8 +13,8 @@ void GameSelectScene::Initialize()
 	bgGraph = LoadGraph("Resources/textures/bg.png");
 
 	// 音データ
-	musicHandle = LoadSoundMem("Resources/sounds/.mp3");
-	seHandle = LoadSoundMem("Resources/sounds/.mp3");
+	//musicHandle = LoadSoundMem("Resources/sounds/.mp3");
+	//seHandle = LoadSoundMem("Resources/sounds/.mp3");
 }
 
 void GameSelectScene::Finalize()
@@ -42,6 +42,8 @@ void GameSelectScene::Update(char keys[256] , char oldkeys[256])
 	// シーン切り替え
 	if (keys[KEY_INPUT_RETURN] && !oldkeys[KEY_INPUT_RETURN])
 	{
+		// 効果音
+		//PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
 		// ゲームプレイシーンへ
 		SceneManager::GetInstance()->ChangeScene("PLAY");
 		return;
@@ -57,5 +59,6 @@ void GameSelectScene::Update(char keys[256] , char oldkeys[256])
 
 void GameSelectScene::Draw()
 {
+	DrawGraph(0, 0, bgGraph, false);
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "select");
 }
