@@ -20,8 +20,9 @@ void GameSelectScene::Update(char keys[256] , char oldkeys[256])
 		return;
 	}
 
-	if (keys[KEY_INPUT_ESCAPE] == true &&
-		oldkeys[KEY_INPUT_ESCAPE] == false) {
+	if (keys[KEY_INPUT_ESCAPE] == true && oldkeys[KEY_INPUT_ESCAPE] == false)
+	{
+		// タイトルへ
 		SceneManager::GetInstance()->ChangeScene("TITLE");
 		return;
 	}
@@ -30,4 +31,5 @@ void GameSelectScene::Update(char keys[256] , char oldkeys[256])
 
 void GameSelectScene::Draw()
 {
+	DrawFormatString(0, 0, GetColor(255, 255, 255), "select");
 }
