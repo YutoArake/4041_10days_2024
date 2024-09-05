@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="scene">
+      <UniqueIdentifier>{a582ed93-2f61-427b-984b-cb40aace04f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene\game">
+      <UniqueIdentifier>{b22690c2-21d1-44df-8762-3dc843f220ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene\engine">
+      <UniqueIdentifier>{10c9b3b7-70c4-499f-95db-4866c090c5bd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\GameClearScene.cpp">
+      <Filter>scene\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\GameDemoScene.cpp">
+      <Filter>scene\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\GameLoadScene.cpp">
+      <Filter>scene\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\GameOverScene.cpp">
+      <Filter>scene\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\GamePlayScene.cpp">
+      <Filter>scene\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\GameSelectScene.cpp">
+      <Filter>scene\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\GameTitleScene.cpp">
+      <Filter>scene\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\AbstractSceneFactory.cpp">
+      <Filter>scene\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\BaseScene.cpp">
+      <Filter>scene\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\SceneFactory.cpp">
+      <Filter>scene\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\SceneManager.cpp">
+      <Filter>scene\engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="scene\GameClearScene.h">
+      <Filter>scene\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\GameDemoScene.h">
+      <Filter>scene\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\GameLoadScene.h">
+      <Filter>scene\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\GameOverScene.h">
+      <Filter>scene\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\GamePlayScene.h">
+      <Filter>scene\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\GameSelectScene.h">
+      <Filter>scene\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\GameTitleScene.h">
+      <Filter>scene\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\AbstractSceneFactory.h">
+      <Filter>scene\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\BaseScene.h">
+      <Filter>scene\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\SceneFactory.h">
+      <Filter>scene\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\SceneManager.h">
+      <Filter>scene\engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
