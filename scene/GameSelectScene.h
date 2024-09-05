@@ -1,5 +1,7 @@
 #pragma once
 #include "BaseScene.h"
+#include "Vector2.h"
+#include <array>
 
 /// <summary>
 /// ゲーム選択画面
@@ -7,8 +9,21 @@
 class GameSelectScene : public BaseScene
 {
 public: // 静的メンバ変数
+	// 全ステージ数
+	static const int STAGE_MAX_NUM = 3;
+	// ステージ番号
+	static int stageNum_;
 
 private: // メンバ変数
+	// クリアマップ数
+	std::array<bool, STAGE_MAX_NUM> isStageClear_;
+
+	// 画像データ
+	int bgGraph;
+
+	// 音データ
+	int musicHandle;
+	int seHandle;
 
 public: // メンバ関数
 	/// <summary>

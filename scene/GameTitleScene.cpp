@@ -3,6 +3,7 @@
 
 void GameTitleScene::Initialize()
 {
+	// ‰æ‘œƒf[ƒ^
 	titleGraph_ = LoadGraph("Resources/textures/title.png");
 }
 

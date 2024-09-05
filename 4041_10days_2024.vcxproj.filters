@@ -22,6 +22,9 @@
     <Filter Include="scene\engine">
       <UniqueIdentifier>{10c9b3b7-70c4-499f-95db-4866c090c5bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="math">
+      <UniqueIdentifier>{0480db1f-f893-45ce-9704-e433dadbbb72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -60,6 +63,9 @@
     <ClCompile Include="scene\SceneManager.cpp">
       <Filter>scene\engine</Filter>
     </ClCompile>
+    <ClCompile Include="math\Vector2.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="scene\GameClearScene.h">
@@ -94,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="scene\SceneManager.h">
       <Filter>scene\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="math\Vector2.h">
+      <Filter>math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
