@@ -76,6 +76,6 @@ void Player::Move(char keys[256])
 }
 
 //"scroll"‚ð“n‚·
-int Player::GetScroll(){
+float Player::GetScroll(){
 	return scroll;
 }

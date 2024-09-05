@@ -17,7 +17,7 @@ public:
 	void Draw();
 
 	void Move(char keys[256]);
-	int GetScroll();
+	float GetScroll();
 
 private:
 	struct Status player = {
@@ -27,6 +27,6 @@ private:
 		5
 	};
 
-	int scroll;
+	float scroll;
 };
 
