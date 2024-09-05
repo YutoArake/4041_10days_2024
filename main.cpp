@@ -1,6 +1,7 @@
 #include "DxLib.h"
 #include "SceneFactory.h"
 #include "SceneManager.h"
+#include "player.h"
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow) {
@@ -58,6 +59,12 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	// シーンマネージャーに最初のシーンをセット
 	SceneManager::GetInstance()->ChangeScene("TITLE");
 
+	//player
+	Player* player = new Player();
+	int scroll;
+	//背景
+	int image_123 = LoadGraph("123.png");
+
 	// 最新のキーボード情報用
 	char keys[256] = { 0 };
 
@@ -81,8 +88,15 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		// 更新処理
 		sceneManager_->Update(keys, oldkeys);
 
+		player->Update(keys);
+		scroll = player->GetScroll();
+
 		// 描画処理
+		DrawGraph(0, -scroll, image_123, true);
+
 		sceneManager_->Draw();
+		player->Draw();
+		
 
 		//---------  ここまでにプログラムを記述  ---------//
 		// (ダブルバッファ)裏面

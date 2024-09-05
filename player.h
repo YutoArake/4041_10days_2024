@@ -17,13 +17,16 @@ public:
 	void Draw();
 
 	void Move(char keys[256]);
+	int GetScroll();
 
 private:
 	struct Status player = {
-		0,
-		0,
-		10,
+		640,
+		64,
+		64,
 		5
 	};
+
+	int scroll;
 };
 
