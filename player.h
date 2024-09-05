@@ -8,6 +8,7 @@ struct Status
 	float R;	//半径
 	float MoveSpeed;//移動速度
 	float FallSpeed;//落下速度
+	int HP;
 };
 
 class Player
@@ -19,6 +20,7 @@ public:
 
 	void Move(char keys[256]);
 	float GetScroll();
+	void Collision(int x1, int y1, int x2, int y2, char tag[64]);
 
 private:
 	struct Status player = {
@@ -26,7 +28,8 @@ private:
 		64,	//座標Y
 		64,	//半径
 		5,	//移動速度
-		1	//落下速度
+		1,	//落下速度
+		3,  //HP
 	};
 
 	float scroll;

@@ -18,9 +18,11 @@ void Player::Draw()
 	DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
 		GetColor(200, 200, 0), true);
 
-	DrawFormatString(0, 0, GetColor(0, 0, 0), "PLposX: %f", player.X);
-	DrawFormatString(0, 12, GetColor(0, 0, 0), "PLposY: %f", player.Y);
 
+	//デバック
+	DrawFormatString(3, 0, GetColor(0, 0, 0), "posX: %f", player.X);
+	DrawFormatString(3, 12, GetColor(0, 0, 0), "posY: %f", player.Y);
+	DrawFormatString(3, 24, GetColor(0, 0, 0), "HP: %d", player.HP);
 }
 
 
@@ -97,4 +99,24 @@ void Player::Move(char keys[256])
 //"scroll"を渡す
 float Player::GetScroll(){
 	return scroll;
+}
+
+//当たり判定
+void Player::Collision(int x1, int y1, int x2, int y2,char tag[64])
+{
+	if(x1< player.X + player.R && player.X - player.R < x2){
+		if (y1 < player.Y + player.R && player.X - player.R < y2) {
+			//当たったのが敵だった時
+			if(tag == "enemy")
+			{
+
+			}
+
+			//当たったのがアイテムだった時
+			if(tag == "item")
+			{
+
+			}
+		}
+	}
 }
