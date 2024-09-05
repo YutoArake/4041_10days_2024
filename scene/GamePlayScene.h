@@ -7,6 +7,7 @@
 class GamePlayScene : public BaseScene
 {
 private: // ƒƒ“ƒo•Ï”
+	bool isClear = false;
 
 public: // ƒƒ“ƒoŠÖ”
 	/// <summary>
