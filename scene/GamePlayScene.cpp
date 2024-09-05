@@ -12,6 +12,8 @@ void GamePlayScene::Finalize()
 
 void GamePlayScene::Update(char keys[256], char oldkeys[256])
 {
+	enemy_.Move();
+
 	if (keys[KEY_INPUT_ESCAPE] == true &&
 		oldkeys[KEY_INPUT_ESCAPE] == false) {
 		SceneManager::GetInstance()->ChangeScene("SELECT");

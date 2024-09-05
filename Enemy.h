@@ -8,6 +8,8 @@ struct Status
 	float Y;
 	float R;
 	float Speed;
+	float min_WIDTH; //“G‚ÌÅ¬”½Ë”ÍˆÍ
+	float max_WIDTH; //“G‚ÌÅ‘å”½Ë”ÍˆÍ
 };
 
 class Enemy
@@ -25,8 +27,12 @@ private:
 		0,
 		0,
 		50,
-		5
+		10,
+		1,
+		1000
 	};
+
+	bool flag = true;
 
 };
 
