@@ -25,6 +25,15 @@
     <Filter Include="math">
       <UniqueIdentifier>{0480db1f-f893-45ce-9704-e433dadbbb72}</UniqueIdentifier>
     </Filter>
+    <Filter Include="object">
+      <UniqueIdentifier>{fe804846-4561-4230-b9ae-eaacd1693530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object\super">
+      <UniqueIdentifier>{642598c4-cc0e-470e-a922-e4b69a8ec63d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object\sub">
+      <UniqueIdentifier>{adca2a01-5113-4ed7-9d4a-efa2854a9564}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -66,6 +75,12 @@
     <ClCompile Include="math\Vector2.cpp">
       <Filter>math</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>object\super</Filter>
+    </ClCompile>
+    <ClCompile Include="Meteor.cpp">
+      <Filter>object\sub</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="scene\GameClearScene.h">
@@ -103,6 +118,12 @@
     </ClInclude>
     <ClInclude Include="math\Vector2.h">
       <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>object\super</Filter>
+    </ClInclude>
+    <ClInclude Include="Meteor.h">
+      <Filter>object\sub</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

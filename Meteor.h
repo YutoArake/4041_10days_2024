@@ -1,14 +1,14 @@
 #pragma once
-#include "BaseScene.h"
-#include "Meteor.h"
+#include "Object.h"
 
 /// <summary>
-/// ゲームデモシーン
+/// メテオ(子クラス)
 /// </summary>
-class GameDemoScene : public BaseScene
+class Meteor : public Object
 {
 private: // メンバ変数
-	Meteor meteor;
+	// 画像データ
+	int meteorGraph;
 
 public: // メンバ関数
 	/// <summary>
@@ -24,7 +24,7 @@ public: // メンバ関数
 	/// <summary>
 	/// 毎フレーム更新
 	/// </summary>
-	void Update(char keys[256], char oldkeys[256]) override;
+	void Update() override;
 
 	/// <summary>
 	///  描画
