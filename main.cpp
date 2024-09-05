@@ -1,6 +1,8 @@
 #include "DxLib.h"
 #include "SceneFactory.h"
 #include "SceneManager.h"
+#include "Enemy.h"
+
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow) {
@@ -56,7 +58,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	sceneManager_->SetSceneFactory(sceneFactory_);
 
 	// シーンマネージャーに最初のシーンをセット
-	SceneManager::GetInstance()->ChangeScene("TITLE");
+	SceneManager::GetInstance()->ChangeScene("PLAY");
 
 	// 最新のキーボード情報用
 	char keys[256] = { 0 };

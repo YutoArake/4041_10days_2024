@@ -3,6 +3,7 @@
 
 void GamePlayScene::Initialize()
 {
+	enemy_.Initialize();
 }
 
 void GamePlayScene::Finalize()
@@ -26,4 +27,5 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 
 void GamePlayScene::Draw()
 {
+	enemy_.Draw();
 }

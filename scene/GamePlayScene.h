@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseScene.h"
+#include "Enemy.h"
 
 /// <summary>
 /// ゲームプレイシーン
@@ -8,6 +9,8 @@ class GamePlayScene : public BaseScene
 {
 private: // メンバ変数
 	bool isClear = false;
+
+	Enemy enemy_;
 
 public: // メンバ関数
 	/// <summary>
