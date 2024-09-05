@@ -21,8 +21,8 @@ void Player::Draw()
 
 	//デバック
 	DrawFormatString(3, 0, GetColor(0, 0, 0), "posX: %f", player.X);
-	DrawFormatString(3, 12, GetColor(0, 0, 0), "posY: %f", player.Y);
-	DrawFormatString(3, 24, GetColor(0, 0, 0), "HP: %", player.HP);
+	DrawFormatString(3, 15, GetColor(0, 0, 0), "posY: %f", player.Y);
+	DrawFormatString(3, 30, GetColor(0, 0, 0), "HP: %d", player.HP);
 }
 
 
