@@ -29,11 +29,11 @@ void Player::Move(char keys[256])
 {
 #pragma region 踏ん張る
 	if (keys[KEY_INPUT_UP] == true) {
-		player.Y -= player.MoveSpeed;
+		player.Y -= player.FallSpeed * 0.8;
 
 		//スクロール加算
 		if (player.Y >= 300 && player.Y <= 2220) {
-			scroll -= player.MoveSpeed;
+			scroll -= player.FallSpeed * 0.8;
 		}
 
 		//画面から出ないように移動制御
