@@ -7,6 +7,7 @@
 class GameTitleScene : public BaseScene
 {
 private: // ƒƒ“ƒo•Ï”
+	int titleGraph_ = 0;
 
 public: // ƒƒ“ƒoŠÖ”
 	/// <summary>
