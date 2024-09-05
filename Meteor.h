@@ -1,29 +1,17 @@
 #pragma once
-#include "BaseScene.h"
+#include "Object.h"
 
 /// <summary>
-/// ゲームクリアシーン
+/// メテオ(子クラス)
 /// </summary>
-class GameClearScene : public BaseScene
+class Meteor : public Object
 {
-	//列挙型
-	enum Menu {
-		NEXT_STAGE,
-		RETURN_TO_STAGESELECT,
-		RETURN_TO_TITLE,
-	};
-
 private: // メンバ変数
-	// メニュー
-	int menu_;
-	const int MENU_MAX_NUM = 2;
+	
 
 	// 画像データ
-	int bgGraph;
-
-	// 音データ
-	int musicHandle;
-	int seHandle;
+	int meteorGraph;
+	int flameGraph;
 
 public: // メンバ関数
 	/// <summary>
@@ -39,7 +27,7 @@ public: // メンバ関数
 	/// <summary>
 	/// 毎フレーム更新
 	/// </summary>
-	void Update(char keys[256], char oldkeys[256]) override;
+	void Update() override;
 
 	/// <summary>
 	///  描画

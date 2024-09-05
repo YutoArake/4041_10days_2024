@@ -7,6 +7,8 @@
 class GameTitleScene : public BaseScene
 {
 private: // メンバ変数
+	// 画像データ
+	int titleGraph_;
 
 public: // メンバ関数
 	/// <summary>
