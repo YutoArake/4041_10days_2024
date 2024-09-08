@@ -20,7 +20,7 @@ public:
 
 	void Move(char keys[256]);
 	float GetScroll();
-	void Collision(int x1, int y1, int x2, int y2, char tag[64]);
+	void Collision(int x1, int y1, int x2, int y2, char tag);
 
 private:
 	struct Status player = {

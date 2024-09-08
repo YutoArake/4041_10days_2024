@@ -1,6 +1,7 @@
 #pragma once
 #include "BaseScene.h"
 #include "player.h"
+#include "item.h"
 
 /// <summary>
 /// ゲームプレイシーン
@@ -12,8 +13,13 @@ private: // メンバ変数
 
 	
 	Player* player = new Player();//player
+	Item* item = new Item();
+
 	int scroll; //スクロール座標
 	int image_123;//背景画像
+
+	float x = 0, y = 0, r = 0;
+	char tag;
 
 public: // メンバ関数
 	/// <summary>

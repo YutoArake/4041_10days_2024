@@ -102,20 +102,20 @@ float Player::GetScroll(){
 }
 
 //“–‚½‚è”»’è
-void Player::Collision(int x1, int y1, int x2, int y2,char tag[64])
+void Player::Collision(int x1, int y1, int x2, int y2,char tag)
 {
 	if(x1< player.X + player.R && player.X - player.R < x2){
-		if (y1 < player.Y + player.R && player.X - player.R < y2) {
+		if (y1 < player.Y + player.R && player.Y - player.R < y2) {
 			//“–‚½‚Á‚½‚Ì‚ª“G‚¾‚Á‚½Žž
-			if(tag == "enemy")
+			if(tag == (char)"enemy")
 			{
 
 			}
 
 			//“–‚½‚Á‚½‚Ì‚ªƒAƒCƒeƒ€‚¾‚Á‚½Žž
-			if(tag == "item")
+			if(tag == (char)"item")
 			{
-
+				player.HP += 1;
 			}
 		}
 	}
