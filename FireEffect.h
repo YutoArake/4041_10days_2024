@@ -1,22 +1,17 @@
 #pragma once
 #include "Object.h"
-#include "FireEffect.h"
-#include <iostream>
 
 /// <summary>
-/// メテオ(子クラス)
+/// ファイアエフェクト
 /// </summary>
-class Meteor : public Object
+class FireEffect : public Object
 {
 private: // メンバ変数
+	// 回転度、拡縮
+	double rotate;
+	double scale;
 	// 画像データ
-	int meteorGraph;
-	int flameGraph;
-
-	int timer;
-
-	// エフェクトコンテナ
-	std::vector<std::unique_ptr<FireEffect>> effects;
+	int fireEffect;
 
 public: // メンバ関数
 	/// <summary>

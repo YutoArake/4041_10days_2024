@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 /// <summary>
 /// オブジェクトステータスの構造体

@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FireEffect.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="object\Enemy.cpp" />
     <ClCompile Include="object\item.cpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="Stage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FireEffect.h" />
     <ClInclude Include="object\Enemy.h" />
     <ClInclude Include="object\item.h" />
     <ClInclude Include="object\Meteor.h" />

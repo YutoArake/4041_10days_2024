@@ -93,6 +93,9 @@
     <ClCompile Include="object\item.cpp">
       <Filter>object\sub</Filter>
     </ClCompile>
+    <ClCompile Include="FireEffect.cpp">
+      <Filter>object\sub</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="scene\GameClearScene.h">
@@ -147,6 +150,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="object\item.h">
+      <Filter>object\sub</Filter>
+    </ClInclude>
+    <ClInclude Include="FireEffect.h">
       <Filter>object\sub</Filter>
     </ClInclude>
   </ItemGroup>
