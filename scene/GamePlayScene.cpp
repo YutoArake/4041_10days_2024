@@ -3,7 +3,7 @@
 
 void GamePlayScene::Initialize()
 {
-	image_123 = LoadGraph("123.png");//”wŒi‰æ‘œ
+	image_123 = LoadGraph("back.png");//”wŒi‰æ‘œ
 	player->Initialize();
 	item->Initialize();
 }
@@ -47,6 +47,7 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 void GamePlayScene::Draw()
 {
 	DrawGraph(0, -scroll, image_123, true);//”wŒi‚Ì‚½‚ßAˆê”Ôã‚ÉI
+	
 	player->Draw();
 	item->Draw();
 
