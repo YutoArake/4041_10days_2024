@@ -44,7 +44,7 @@ void GamePlayScene::Draw()
 {
 	DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back, true);//背景のため、一番上に！
 	stage.Draw(scroll);
-	enemy_.Draw();
+	//enemy_.Draw();
 	player->Draw(scroll);
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "play");
 }
