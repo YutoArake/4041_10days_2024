@@ -1,33 +1,51 @@
 #include "Enemy.h"
 
 
-void Enemy::Initialize()
+void Enemy::Initialize(ObjectStatus status)
 {
+	// ステータス代入
+	status_.X = status.X;
+	status_.Y = status.Y;
+	status_.R = status.R;
+	status_.Tag = status.Tag;
 
+	speed = 5;
+}
+
+void Enemy::Finalize()
+{
 }
 
 void Enemy::Update()
 {
+	Move();
+}
 
+void Enemy::Draw(float scroll)
+{
+	//DrawBox(0, 0, 10, 10, GetColor(255, 0, 0), true);
+
+	DrawBox(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
+		GetColor(255, 0, 0), true);
+}
+
+//当たり判定
+void Enemy::Collision()
+{
+	//当たったら消える
+	status_.X = -50;
 }
 
 void Enemy::Move()
 {
-	enemy.X = enemy.X + enemy.Speed;
+	status_.X = status_.X + speed;
 
-	if (enemy.X >= enemy.max_WIDTH)
+	if (status_.X >= 1280)
 	{
-		enemy.Speed = -enemy.Speed;
+		speed = -speed;
 	}
-	else if (enemy.X <= -enemy.min_WIDTH)
+	else if (status_.X <= 0)
 	{
-		enemy.Speed = -enemy.Speed;
+		speed = -speed;
 	}
-}
-
-void Enemy::Draw()
-{
-	DrawBox(enemy.X - enemy.R, enemy.Y - enemy.R, enemy.X + enemy.R, enemy.Y + enemy.R,
-		GetColor(255, 0, 0), true);
-
 }

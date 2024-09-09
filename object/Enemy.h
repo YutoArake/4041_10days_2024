@@ -1,36 +1,29 @@
 #pragma once
 #include "DxLib.h"
 
-struct Status
-{
-	float X;
-	float Y;
-	float R;
-	float Speed;
-	float min_WIDTH; //敵の最小反射範囲
-	float max_WIDTH; //敵の最大反射範囲
-};
+#include "DxLib.h"
+#include "Object.h"
 
-class Enemy
+/// <summary>
+/// アイテム
+/// </summary>
+class Enemy : public Object
 {
-public:
-
-	void Initialize();
-	void Update();
+public: // メンバ関数
+	// 初期化
+	void Initialize(ObjectStatus status) override;
+	// 終了処理
+	void Finalize() override;
+	// 更新
+	void Update() override;
+	// 描画
+	void Draw(float scroll) override;
+	// 当たり判定
+	void Collision() override;
+	//動き
 	void Move();
-	void Draw();
-	
+
 private:
-
-	struct Status enemy = {
-		0,
-		0,
-		50,
-		10,
-		1,
-		1000
-	};
-
-	bool flag = true;
+	int speed;
 
 };

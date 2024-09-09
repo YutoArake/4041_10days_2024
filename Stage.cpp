@@ -1,6 +1,7 @@
 #include "Stage.h"
 #include "Meteor.h"
 #include "item.h"
+#include "Enemy.h"
 #include <cassert>
 #include <fstream>
 
@@ -81,6 +82,7 @@ void Stage::LoadStageCommands()
 		ObjectNum objectNum = ObjectNum::None;
 		if (word.find("meteor") == 0) { objectNum = ObjectNum::Meteor; }
 		else if (word.find("item") == 0) { objectNum = ObjectNum::Item; }
+		else if (word.find("enemy") == 0) { objectNum = ObjectNum::Enemy; }
 		else if (word.find("start") == 0) {}
 		else { continue; } // ‰½‚à“Ç‚İ‚Ü‚ê‚Ä‚È‚¯‚ê‚ÎŸ‚Ö
 
@@ -123,6 +125,7 @@ void Stage::PopGimmick(ObjectNum objectNum, const ObjectStatus& status)
 	{
 	case ObjectNum::Meteor:	object = std::make_unique<Meteor>();	break;
 	case ObjectNum::Item:		object = std::make_unique<Item>();		break;
+	case ObjectNum::Enemy:		object = std::make_unique<Enemy>();		break;
 	}
 
 	//‰Šúİ’è
