@@ -6,7 +6,24 @@
 /// </summary>
 class GameClearScene : public BaseScene
 {
+	//列挙型
+	enum Menu {
+		NEXT_STAGE,
+		RETURN_TO_STAGESELECT,
+		RETURN_TO_TITLE,
+	};
+
 private: // メンバ変数
+	// メニュー
+	int menu_;
+	const int MENU_MAX_NUM = 2;
+
+	// 画像データ
+	int bgGraph;
+
+	// 音データ
+	int musicHandle;
+	int seHandle;
 
 public: // メンバ関数
 	/// <summary>

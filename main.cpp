@@ -1,4 +1,3 @@
-#include "DxLib.h"
 #include "SceneFactory.h"
 #include "SceneManager.h"
 #include "player.h"

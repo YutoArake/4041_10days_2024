@@ -1,11 +1,13 @@
 #include "GamePlayScene.h"
+#include "GameSelectScene.h"
 #include "SceneManager.h"
 
 void GamePlayScene::Initialize()
 {
-	image_back = LoadGraph("back.png");//”wŒi‰æ‘œ
+	image_back = LoadGraph("back.png");//èƒŒæ™¯ç”»åƒ
 	player->Initialize();
 	item->Initialize();
+	stage.Initialize(GameSelectScene::stageNum_);
 }
 
 void GamePlayScene::Finalize()
@@ -14,14 +16,17 @@ void GamePlayScene::Finalize()
 
 void GamePlayScene::Update(char keys[256], char oldkeys[256])
 {
-	if (keys[KEY_INPUT_ESCAPE] == true &&
-		oldkeys[KEY_INPUT_ESCAPE] == false) {
+	stage.Update();
+
+	if (keys[KEY_INPUT_ESCAPE] == true && oldkeys[KEY_INPUT_ESCAPE] == false)
+	{
+		// ã‚¹ãƒ†ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ãƒˆã¸
 		SceneManager::GetInstance()->ChangeScene("SELECT");
 		return;
 	}
 
 	if (isClear) {
-		// ƒQ[ƒ€ƒvƒŒƒCƒV[ƒ“‚Ö
+		// ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢ã‚·ãƒ¼ãƒ³ã¸
 		SceneManager::GetInstance()->ChangeScene("CLEAR");
 		return;
 	}
@@ -29,11 +34,11 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 	player->Update(keys);
 	item->Update();
 
-	//ƒXƒNƒ[ƒ‹À•W‚ÌŽó‚¯“n‚µ
+	//ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åº§æ¨™ã®å—ã‘æ¸¡ã—
 	scroll = player->GetScroll();
 	item->SetScroll(scroll);
 
-	//“–‚½‚è”»’è
+	//å½“ãŸã‚Šåˆ¤å®š
 	player->Collision(
 		item->GetStatus().X - item->GetStatus().R,
 		item->GetStatus().Y - item->GetStatus().R,
@@ -52,9 +57,11 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 
 void GamePlayScene::Draw()
 {
-	DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back, true);//”wŒi‚Ì‚½‚ßAˆê”Ôã‚ÉI
+	DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back, true);//èƒŒæ™¯ã®ãŸã‚ã€ä¸€ç•ªä¸Šã«ï¼
 	
 
 	player->Draw();
 	item->Draw();
+	DrawFormatString(0, 0, GetColor(255, 255, 255), "play");
+	stage.Draw();
 }
