@@ -16,7 +16,7 @@ private: // メンバ変数
 	Item* item = new Item();
 
 	int scroll; //スクロール座標
-	int image_123;//背景画像
+	int image_back;//背景画像
 
 public: // メンバ関数
 	/// <summary>

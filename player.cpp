@@ -3,6 +3,7 @@
 void Player::Initialize()
 {
 	isInvincible = false;
+	image_player = LoadGraph("player.png");
 }
 
 void Player::Update(char keys[256])
@@ -33,11 +34,17 @@ void Player::Draw()
 	if (isInvincible == false) {
 		DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
 			GetColor(0, 255, 0), true);
+
+		DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
+			image_player, true);
 	}
 	//–³“GŽž
 	else {
 		DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
 			GetColor(0, 200, 0), true);
+
+		DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
+			image_player, true);
 	}
 
 	

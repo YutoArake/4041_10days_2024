@@ -28,6 +28,13 @@ ItemStatus Item::GetStatus()
 	return item;
 }
 
+void Item::SetStatus(float x, float y, float r)
+{
+	item.X = x;
+	item.Y = y;
+	item.R = r;
+}
+
 //“–‚½‚è”»’è
 void Item::Collision(int x1, int y1, int x2, int y2)
 {

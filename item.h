@@ -18,6 +18,7 @@ public:
 
 	void Collision(int x1, int y1, int x2, int y2);
 	ItemStatus GetStatus();
+	void SetStatus(float x,float y,float r);
 
 	void SetScroll(float scroll);
 
@@ -26,7 +27,7 @@ private:
 		640,	//À•WX
 		900,	//À•WY
 		20,		//”¼Œa
-		(char)"enemy"	//tag
+		(char)"item"	//tag
 	};
 
 	float scroll;

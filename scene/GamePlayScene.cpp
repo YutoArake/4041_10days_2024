@@ -3,7 +3,7 @@
 
 void GamePlayScene::Initialize()
 {
-	image_123 = LoadGraph("back.png");//”wŒi‰æ‘œ
+	image_back = LoadGraph("back.png");//”wŒi‰æ‘œ
 	player->Initialize();
 	item->Initialize();
 }
@@ -52,7 +52,7 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 
 void GamePlayScene::Draw()
 {
-	DrawExtendGraph(0, 0-scroll, 1280, 2880-scroll, image_123, true);//”wŒi‚Ì‚½‚ßAˆê”Ôã‚ÉI
+	DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back, true);//”wŒi‚Ì‚½‚ßAˆê”Ôã‚ÉI
 	//DrawBox(860, 0, 1280, 960, GetColor(0, 0, 0), true);
 
 	player->Draw();

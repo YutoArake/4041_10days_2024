@@ -36,7 +36,8 @@ private:
 	};
 
 	float scroll;//スクロール座標
-	bool isInvincible;
-	int invincibleTimer;
+	bool isInvincible;//無敵フラグ
+	int invincibleTimer;//無敵用のタイマー
+	int image_player;//player用の画像
 };
 
