@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseScene.h"
+#include "Enemy.h"
 #include "player.h"
 #include "item.h"
 #include "Stage.h"
@@ -13,6 +14,9 @@ private: // メンバ変数
 	Stage stage;
 	bool isClear = false;
 
+	Enemy enemy_;
+
+public: // �����o�֐�
 	
 	Player* player = new Player();//player
 	Item* item = new Item();

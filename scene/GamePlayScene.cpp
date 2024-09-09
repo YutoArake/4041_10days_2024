@@ -4,6 +4,7 @@
 
 void GamePlayScene::Initialize()
 {
+	enemy_.Initialize();
 	image_back = LoadGraph("back.png");//背景画像
 	player->Initialize();
 	item->Initialize();
@@ -16,6 +17,10 @@ void GamePlayScene::Finalize()
 
 void GamePlayScene::Update(char keys[256], char oldkeys[256])
 {
+	enemy_.Move();
+
+	if (keys[KEY_INPUT_ESCAPE] == true &&
+		oldkeys[KEY_INPUT_ESCAPE] == false) {
 	stage.Update();
 
 	if (keys[KEY_INPUT_ESCAPE] == true && oldkeys[KEY_INPUT_ESCAPE] == false)
@@ -61,6 +66,7 @@ void GamePlayScene::Draw()
 	
 
 	player->Draw();
+	enemy_.Draw();
 	item->Draw();
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "play");
 	stage.Draw();

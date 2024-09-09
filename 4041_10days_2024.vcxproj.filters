@@ -72,6 +72,8 @@
     <ClCompile Include="scene\SceneManager.cpp">
       <Filter>scene\engine</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>ソース ファイル</Filter>
     <ClCompile Include="player.cpp">
       <Filter>ソース ファイル</Filter>
     <ClCompile Include="math\Vector2.cpp">
@@ -118,6 +120,8 @@
     <ClInclude Include="scene\SceneManager.h">
       <Filter>scene\engine</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>ヘッダー ファイル</Filter>
     <ClInclude Include="player.h">
       <Filter>ヘッダー ファイル</Filter>
     <ClInclude Include="math\Vector2.h">
