@@ -25,5 +25,7 @@ public: // ƒƒ“ƒoŠÖ”
 
 private:
 	int speed;
-
+	int saveSpeed;
+	bool isMove;
+	int stopTimer;
 };

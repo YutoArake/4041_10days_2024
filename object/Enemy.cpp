@@ -10,6 +10,8 @@ void Enemy::Initialize(ObjectStatus status)
 	status_.Tag = status.Tag;
 
 	speed = 5;
+	saveSpeed = speed;
+	isMove = true;
 }
 
 void Enemy::Finalize()
@@ -27,6 +29,8 @@ void Enemy::Draw(float scroll)
 
 	DrawBox(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
 		GetColor(255, 0, 0), true);
+
+	DrawFormatString(3, 90, GetColor(255, 255, 255), "isMove: %d", isMove);
 }
 
 //“–‚½‚è”»’è
@@ -38,7 +42,11 @@ void Enemy::Collision()
 
 void Enemy::Move()
 {
-	status_.X = status_.X + speed;
+#pragma region 
+#pragma endregion
+
+#pragma region ¶‰EˆÚ“®ˆê’è
+	/*status_.X = status_.X + speed;
 
 	if (status_.X >= 1280)
 	{
@@ -47,5 +55,46 @@ void Enemy::Move()
 	else if (status_.X <= 0)
 	{
 		speed = -speed;
+	}*/
+#pragma endregion
+
+#pragma region ¶‰EˆÚ“®ˆê’è‚ÅŽ~‚Ü‚é
+	int stopTime = 30;
+	if (isMove == true) {
+		status_.X = status_.X + speed;
 	}
+	
+
+	if (status_.X >= 1280)
+	{
+		speed = -saveSpeed;
+		isMove = false;
+		if(isMove == false)
+		{
+			stopTimer++;
+			if(stopTimer >= stopTime)
+			{
+				stopTimer = 0;
+				isMove = true;
+			}
+		}
+	}
+	else if (status_.X <= 0)
+	{
+		speed = saveSpeed;
+		isMove = false;
+		if (isMove == false)
+		{
+			stopTimer++;
+			if (stopTimer >= stopTime)
+			{
+				stopTimer = 0;
+				isMove = true;
+			}
+		}
+	}
+
+#pragma endregion
+
+	
 }
