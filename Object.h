@@ -2,6 +2,15 @@
 #include "Vector2.h"
 
 /// <summary>
+/// オブジェクトパラメータの構造体
+/// </summary>
+struct ObjectParam
+{
+	float x;
+	float y;
+};
+
+/// <summary>
 /// オブジェクトクラス(親クラス)
 /// </summary>
 class Object
@@ -14,7 +23,7 @@ public: // メンバ関数
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	virtual void Initialize() = 0;
+	virtual void Initialize(ObjectParam param) = 0;
 
 	/// <summary>
 	/// 毎フレーム更新

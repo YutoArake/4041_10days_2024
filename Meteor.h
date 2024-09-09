@@ -7,8 +7,6 @@
 class Meteor : public Object
 {
 private: // メンバ変数
-	
-
 	// 画像データ
 	int meteorGraph;
 	int flameGraph;
@@ -17,7 +15,7 @@ public: // メンバ関数
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Initialize() override;
+	void Initialize(ObjectParam param) override;
 
 	/// <summary>
 	/// 終了処理

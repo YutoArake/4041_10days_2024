@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseScene.h"
+#include "Stage.h"
 
 /// <summary>
 /// ゲームプレイシーン
@@ -7,6 +8,7 @@
 class GamePlayScene : public BaseScene
 {
 private: // メンバ変数
+	Stage stage;
 	bool isClear = false;
 
 public: // メンバ関数

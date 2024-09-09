@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseScene.h"
-#include "Meteor.h"
 
 /// <summary>
 /// ゲームデモシーン
@@ -8,7 +7,6 @@
 class GameDemoScene : public BaseScene
 {
 private: // メンバ変数
-	Meteor meteor;
 
 public: // メンバ関数
 	/// <summary>

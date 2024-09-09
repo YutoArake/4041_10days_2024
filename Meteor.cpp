@@ -1,11 +1,11 @@
 #include "Meteor.h"
 #include "DxLib.h"
 
-void Meteor::Initialize()
+void Meteor::Initialize(ObjectParam param)
 {
-	// 座標
-	pos.x = 600;
-	pos.y = 1000.0f;
+	// 座標入力
+	pos.x = param.x;
+	pos.y = param.y;
 
 	// 画像データ
 	meteorGraph = LoadGraph("Resources/textures/meteor.png");
