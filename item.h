@@ -6,7 +6,7 @@ struct ItemStatus
 	float X;		//座標X
 	float Y;		//座標Y
 	float R;		//半径
-	char Teg[64];	//タグ
+	char Teg;	//タグ
 };
 
 class Item
@@ -26,7 +26,7 @@ private:
 		640,	//座標X
 		900,	//座標Y
 		20,		//半径
-		"item"	//tag
+		(char)"item"	//tag
 	};
 
 	float scroll;

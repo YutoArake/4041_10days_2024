@@ -16,10 +16,6 @@ void Item::Draw()
 
 	DrawBox(item.X - item.R, item.Y - item.R - scroll, item.X + item.R, item.Y + item.R - scroll,
 		GetColor(0, 0, 200), true);
-
-
-	DrawFormatString(3, 45, GetColor(0, 0, 0), "item_posX: %f", item.X);
-	DrawFormatString(3, 60, GetColor(0, 0, 0), "item_posY: %f", item.Y);
 }
 
 void Item::SetScroll(float scroll)

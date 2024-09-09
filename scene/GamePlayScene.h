@@ -18,9 +18,6 @@ private: // メンバ変数
 	int scroll; //スクロール座標
 	int image_123;//背景画像
 
-	float x = 0, y = 0, r = 0;
-	char tag;
-
 public: // メンバ関数
 	/// <summary>
 	/// 初期化
