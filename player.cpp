@@ -29,8 +29,18 @@ void Player::Draw()
 {
 	//DrawBox(0, 0, 10, 10, GetColor(255, 0, 0), true);
 
-	DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
-		GetColor(200, 200, 0), true);
+	//通常時
+	if (isInvincible == false) {
+		DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
+			GetColor(0, 255, 0), true);
+	}
+	//無敵時
+	else {
+		DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
+			GetColor(0, 200, 0), true);
+	}
+
+	
 
 
 	//デバック
