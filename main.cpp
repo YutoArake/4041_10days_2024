@@ -1,99 +1,98 @@
-#include "DxLib.h"
 #include "SceneFactory.h"
 #include "SceneManager.h"
 #include "Enemy.h"
+#include "player.h"
 
-
-// �v���O������ WinMain ����n�܂�܂�
+// プログラムは WinMain から始まります
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow) {
 
-#pragma region Dxlib����������
-	// �E�B���h�E���[�h�ɐݒ�
+#pragma region Dxlib初期化処理
+	// ウィンドウモードに設定
 	ChangeWindowMode(TRUE);
 
-	// �E�B���h�E�̃^�C�g���ɕ\�����镶����
-	const char TITLE[] = "4041_���ʒ���";
+	// ウィンドウのタイトルに表示する文字列
+	const char TITLE[] = "4041_月面着陸";
 
-	// �E�B���h�E����
+	// ウィンドウ横幅
 	const int WIN_WIDTH = 1280;
 
-	// �E�B���h�E�c��
+	// ウィンドウ縦幅
 	const int WIN_HEIGHT = 960;
 
-	// �E�B���h�E�T�C�Y���蓮�ł͕ύX�������A
-	// ���E�B���h�E�T�C�Y�ɍ��킹�Ċg��ł��Ȃ��悤�ɂ���
+	// ウィンドウサイズを手動では変更させず、
+	// かつウィンドウサイズに合わせて拡大できないようにする
 	SetWindowSizeChangeEnableFlag(FALSE, FALSE);
 
-	// �^�C�g����ύX
+	// タイトルを変更
 	SetMainWindowText(TITLE);
 
-	// ��ʃT�C�Y�̍ő�T�C�Y�A�J���[�r�b�g����ݒ�(���j�^�[�̉𑜓x�ɍ��킹��)
+	// 画面サイズの最大サイズ、カラービット数を設定(モニターの解像度に合わせる)
 	SetGraphMode(WIN_WIDTH, WIN_HEIGHT, 32);
 
-	// ��ʃT�C�Y��ݒ�(�𑜓x�Ƃ̔䗦�Őݒ�)
+	// 画面サイズを設定(解像度との比率で設定)
 	SetWindowSizeExtendRate(1.0);
 
-	// ��ʂ̔w�i�F��ݒ肷��
+	// 画面の背景色を設定する
 	SetBackgroundColor(0x00, 0x00, 0x00);
 
-	// DXlib�̏�����
+	// DXlibの初期化
 	if (DxLib_Init() == -1) { return -1; }
 
-	// (�_�u���o�b�t�@)�`���O���t�B�b�N�̈�͗��ʂ��w��
+	// (ダブルバッファ)描画先グラフィック領域は裏面を指定
 	SetDrawScreen(DX_SCREEN_BACK);
-#pragma endregion//Dxlib����������
+#pragma endregion//Dxlib初期化処理
 
-	// �摜�Ȃǂ̃��\�[�X�f�[�^�̕ϐ��錾�Ɠǂݍ���
+	// 画像などのリソースデータの変数宣言と読み込み
 
-	// �Q�[�����[�v�Ŏg���ϐ��̐錾
-	// �V�[���}�l�[�W���[
+	// ゲームループで使う変数の宣言
+	// シーンマネージャー
 	SceneManager* sceneManager_ = nullptr;
-	// �V�[���t�@�N�g���[
+	// シーンファクトリー
 	AbstractSceneFactory* sceneFactory_ = nullptr;
 
-	// �V�[���}�l�[�W���[�̃C���X�^���X�擾
+	// シーンマネージャーのインスタンス取得
 	sceneManager_ = SceneManager::GetInstance();
-	// �V�[���t�@�N�g���[�𐶐����A�}�l�[�W���[�ɍŏ��ɃZ�b�g
+	// シーンファクトリーを生成し、マネージャーに最初にセット
 	sceneFactory_ = new SceneFactory();
 	sceneManager_->SetSceneFactory(sceneFactory_);
 
-	// �V�[���}�l�[�W���[�ɍŏ��̃V�[�����Z�b�g
+	// シーンマネージャーに最初のシーンをセット
 	SceneManager::GetInstance()->ChangeScene("PLAY");
 
-	// �ŐV�̃L�[�{�[�h���p
+	// 最新のキーボード情報用
 	char keys[256] = { 0 };
 
-	// 1���[�v(�t���[��)�O�̃L�[�{�[�h���
+	// 1ループ(フレーム)前のキーボード情報
 	char oldkeys[256] = { 0 };
 
-	// �Q�[�����[�v
+	// ゲームループ
 	while (true) {
-		// �ŐV�̃L�[�{�[�h��񂾂������̂�1�t���[���O�̃L�[�{�[�h���Ƃ��ĕۑ�
+		// 最新のキーボード情報だったものは1フレーム前のキーボード情報として保存
 		for (int i = 0; i < 256; ++i) {
 			oldkeys[i] = keys[i];
 		}
 
-		// �ŐV�̃L�[�{�[�h�����擾
+		// 最新のキーボード情報を取得
 		GetHitKeyStateAll(keys);
 
-		// ��ʃN���A
+		// 画面クリア
 		ClearDrawScreen();
-		//---------  ��������v���O�������L�q  ----------//
+		//---------  ここからプログラムを記述  ----------//
 
-		// �X�V����
+		// 更新処理
 		sceneManager_->Update(keys, oldkeys);
 
-		// �`�揈��
+		// 描画処理
 		sceneManager_->Draw();
 
-		//---------  �����܂łɃv���O�������L�q  ---------//
-		// (�_�u���o�b�t�@)����
+		//---------  ここまでにプログラムを記述  ---------//
+		// (ダブルバッファ)裏面
 		ScreenFlip();
 
-		// 20�~���b�ҋ@(�^��60FPS)
+		// 20ミリ秒待機(疑似60FPS)
 		WaitTimer(20);
 
-		// Windows�V�X�e�����炭�������������
+		// Windowsシステムからくる情報を処理する
 		if (ProcessMessage() == -1) {
 			break;
 		}
@@ -103,12 +102,12 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}
 	}
 
-	// �V�[���}�l�[�W���[�̉��
+	// シーンマネージャーの解放
 	sceneManager_->Finalize();
 
-	// Dx���C�u�����I������
+	// Dxライブラリ終了処理
 	DxLib_End();
 
-	// ����I��
+	// 正常終了
 	return 0;
 }

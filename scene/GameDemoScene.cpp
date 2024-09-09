@@ -20,4 +20,5 @@ void GameDemoScene::Update(char keys[256], char oldkeys[256])
 
 void GameDemoScene::Draw()
 {
+	DrawFormatString(0, 0, GetColor(255, 0, 0), "demo");
 }
