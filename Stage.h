@@ -48,4 +48,3 @@ private: // メンバ関数
 	// ギミック生成
 	void PopGimmick(ObjectNum objectNum, const ObjectParam& objectParam);
 };
-

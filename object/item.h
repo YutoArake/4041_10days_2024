@@ -32,6 +32,3 @@ private:
 
 	float scroll;
 };
-
-
-

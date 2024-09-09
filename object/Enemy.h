@@ -1,7 +1,6 @@
 #pragma once
 #include "DxLib.h"
 
-
 struct Status
 {
 	float X;
@@ -35,4 +34,3 @@ private:
 	bool flag = true;
 
 };
-

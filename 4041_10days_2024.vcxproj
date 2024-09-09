@@ -122,7 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>c:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)math;$(ProjectDir)scene;$(ProjectDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>c:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)math;$(ProjectDir)scene;$(ProjectDir)object;$(ProjectDir)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>c:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)math;$(ProjectDir)scene;$(ProjectDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>c:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)math;$(ProjectDir)scene;$(ProjectDir)object;$(ProjectDir)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -151,13 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="item.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="player.cpp" />
+    <ClCompile Include="object\Enemy.cpp" />
+    <ClCompile Include="object\item.cpp" />
+    <ClCompile Include="object\Meteor.cpp" />
+    <ClCompile Include="object\Object.cpp" />
+    <ClCompile Include="object\player.cpp" />
     <ClCompile Include="math\Vector2.cpp" />
-    <ClCompile Include="Meteor.cpp" />
-    <ClCompile Include="Object.cpp" />
     <ClCompile Include="scene\AbstractSceneFactory.cpp" />
     <ClCompile Include="scene\BaseScene.cpp" />
     <ClCompile Include="scene\GameClearScene.cpp" />
@@ -172,12 +172,12 @@
     <ClCompile Include="Stage.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="item.h" />
-    <ClInclude Include="player.h" />
+    <ClInclude Include="object\Enemy.h" />
+    <ClInclude Include="object\item.h" />
+    <ClInclude Include="object\Meteor.h" />
+    <ClInclude Include="object\Object.h" />
+    <ClInclude Include="object\player.h" />
     <ClInclude Include="math\Vector2.h" />
-    <ClInclude Include="Meteor.h" />
-    <ClInclude Include="Object.h" />
     <ClInclude Include="scene\AbstractSceneFactory.h" />
     <ClInclude Include="scene\BaseScene.h" />
     <ClInclude Include="scene\GameClearScene.h" />

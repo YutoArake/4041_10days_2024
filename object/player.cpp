@@ -3,7 +3,7 @@
 void Player::Initialize()
 {
 	isInvincible = false;
-	image_player = LoadGraph("player.png");
+	image_player = LoadGraph("Resources/textures/player.png");
 }
 
 void Player::Update(char keys[256])
@@ -46,9 +46,6 @@ void Player::Draw()
 		DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
 			image_player, true);
 	}
-
-	
-
 
 	//デバック
 	DrawFormatString(3, 0, GetColor(255, 255, 255), "posX: %f", player.X);

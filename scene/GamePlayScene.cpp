@@ -5,7 +5,7 @@
 void GamePlayScene::Initialize()
 {
 	enemy_.Initialize();
-	image_back = LoadGraph("back.png");//背景画像
+	image_back = LoadGraph("Resources/textures/back.png");//背景画像
 	player->Initialize();
 	item->Initialize();
 	stage.Initialize(GameSelectScene::stageNum_);
@@ -17,12 +17,6 @@ void GamePlayScene::Finalize()
 
 void GamePlayScene::Update(char keys[256], char oldkeys[256])
 {
-	enemy_.Move();
-
-	if (keys[KEY_INPUT_ESCAPE] == true &&
-		oldkeys[KEY_INPUT_ESCAPE] == false) {
-	stage.Update();
-
 	if (keys[KEY_INPUT_ESCAPE] == true && oldkeys[KEY_INPUT_ESCAPE] == false)
 	{
 		// ステージセレクトへ
@@ -36,7 +30,10 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 		return;
 	}
 
+	// オブジェクトの更新
+	stage.Update();
 	player->Update(keys);
+	enemy_.Move();
 	item->Update();
 
 	//スクロール座標の受け渡し
@@ -51,23 +48,19 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 		item->GetStatus().Y + item->GetStatus().R,
 		(char)item->GetStatus().Teg);
 
-
 	item->Collision(
 		player->GetStatus().X - player->GetStatus().R,
 		player->GetStatus().Y - player->GetStatus().R,
 		player->GetStatus().X + player->GetStatus().R,
 		player->GetStatus().Y + player->GetStatus().R);
-
 }
 
 void GamePlayScene::Draw()
 {
 	DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back, true);//背景のため、一番上に！
-	
-
-	player->Draw();
-	enemy_.Draw();
-	item->Draw();
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "play");
 	stage.Draw();
+	item->Draw();
+	enemy_.Draw();
+	player->Draw();
+	DrawFormatString(0, 0, GetColor(255, 255, 255), "play");
 }

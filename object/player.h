@@ -40,4 +40,3 @@ private:
 	int invincibleTimer;//無敵用のタイマー
 	int image_player;//player用の画像
 };
-
