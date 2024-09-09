@@ -1,5 +1,6 @@
 #include "Stage.h"
 #include "Meteor.h"
+#include "item.h"
 #include <cassert>
 #include <fstream>
 
@@ -17,10 +18,10 @@ void Stage::Update()
 	for (auto& object : objects_) { object->Update(); }
 }
 
-void Stage::Draw()
+void Stage::Draw(float scroll)
 {
 	// 全オブジェクトの描画
-	for (auto& object : objects_) { object->Draw(); }
+	for (auto& object : objects_) { object->Draw(scroll); }
 }
 
 void Stage::LoadStage()
@@ -79,45 +80,70 @@ void Stage::LoadStageCommands()
 		// どのギミックを読み込んだかの判別
 		ObjectNum objectNum = ObjectNum::None;
 		if (word.find("meteor") == 0) { objectNum = ObjectNum::Meteor; }
+		else if (word.find("item") == 0) { objectNum = ObjectNum::Item; }
 		else if (word.find("start") == 0) {}
 		else { continue; } // 何も読み込まれてなければ次へ
 
 		// コマンド読み込み
 		// 引数用変数
-		ObjectParam objectParam;
-		LoadStreamCommands(line_stream, word, objectParam);
+		ObjectStatus status;
+		LoadStreamCommands(line_stream, word, status);
 
 		// ギミック生成
-		PopGimmick(objectNum, objectParam);
+		PopGimmick(objectNum, status);
 	}
 }
 
-void Stage::LoadStreamCommands(std::istringstream& stream, std::string& word, ObjectParam& objectParam)
+void Stage::LoadStreamCommands(std::istringstream& stream, std::string& word, ObjectStatus& status)
 {
 	// (区切りで先頭文字列を取得
 	while (getline(stream, word, '('))
 	{
 		// 座標取得
 		if (word.find("pos") == 0) {
-			stream >> objectParam.x;
-			stream >> objectParam.y;
+			stream >> status.X;
+			stream >> status.Y;
+		}
+		else if (word.find("rad") == 0) {
+			stream >> status.R;
+		}
+		else if (word.find("tag") == 0) {
+			stream >> status.Tag;
 		}
 		// 空白まで飛ばす
 		getline(stream, word, ' ');
 	}
 }
 
-void Stage::PopGimmick(ObjectNum objectNum, const ObjectParam& objectParam)
+void Stage::PopGimmick(ObjectNum objectNum, const ObjectStatus& status)
 {
 	// 宣言、生成
 	std::unique_ptr<Object> object;
 	switch (objectNum)
 	{
 	case ObjectNum::Meteor:	object = std::make_unique<Meteor>();	break;
+	case ObjectNum::Item:		object = std::make_unique<Item>();		break;
 	}
 
 	//初期設定
-	object->Initialize(objectParam);
+	object->Initialize(status);
 	// コンテナにプッシュ
 	objects_.push_back(std::move(object));
+}
+
+void Stage::ObjectCollision(Player* p)
+{
+	// 全オブジェクトの当たり判定
+	for (auto& object : objects_) {
+		// プレイヤーとオブジェクトの座標取得
+		int x1 = p->GetStatus().X, y1 = p->GetStatus().Y, r1 = p->GetStatus().R;
+		int x2 = object->GetStatus().X, y2 = object->GetStatus().Y, r2 = object->GetStatus().R;
+
+		if (x1 - r1 < x2 + r2 && x2 - r2 < x1 + r1) {
+			if (y1 - r1 < y2 + r2 && y2 - r2 < y1 + r1) {
+				p->Collision(object->GetStatus().Tag);
+				object->Collision();
+			}
+		}
+	}
 }

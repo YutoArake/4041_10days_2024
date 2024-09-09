@@ -15,7 +15,7 @@ public: // ƒƒ“ƒoŠÖ”
 	/// <summary>
 	/// ‰Šú‰»
 	/// </summary>
-	void Initialize(ObjectParam param) override;
+	void Initialize(ObjectStatus status) override;
 
 	/// <summary>
 	/// I—¹ˆ—
@@ -30,5 +30,8 @@ public: // ƒƒ“ƒoŠÖ”
 	/// <summary>
 	///  •`‰æ
 	/// </summary>
-	void Draw() override;
+	void Draw(float scroll) override;
+
+	// “–‚½‚è”»’è
+	void Collision() override;
 };

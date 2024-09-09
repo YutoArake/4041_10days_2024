@@ -1,11 +1,13 @@
 #include "Meteor.h"
 #include "DxLib.h"
 
-void Meteor::Initialize(ObjectParam param)
+void Meteor::Initialize(ObjectStatus status)
 {
-	// 座標入力
-	pos.x = param.x;
-	pos.y = param.y;
+	// ステータス代入
+	status_.X = status.X;
+	status_.Y = status.Y;
+	status_.R = status.R;
+	status_.Tag = status.Tag;
 
 	// 画像データ
 	meteorGraph = LoadGraph("Resources/textures/meteor.png");
@@ -17,10 +19,16 @@ void Meteor::Finalize()
 
 void Meteor::Update()
 {
-	pos.y -= 1.0f;
+	status_.Y -= 1.0f;
 }
 
-void Meteor::Draw()
+void Meteor::Draw(float scroll)
 {
-	DrawGraph(pos.x - 32, pos.y - 32, meteorGraph, true);
+	DrawGraph(status_.X - 32, status_.Y - 32 - scroll, meteorGraph, true);
+}
+
+void Meteor::Collision()
+{
+	//当たったら消える
+	status_.X = -50;
 }

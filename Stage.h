@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include "player.h"
 #include <vector>
 #include <sstream>
 
@@ -14,7 +15,8 @@ class Stage
 	enum class ObjectNum
 	{
 		None,
-		Meteor
+		Meteor,
+		Item
 	};
 
 private: // メンバ変数
@@ -34,7 +36,10 @@ public: // メンバ関数
 	void Update();
 
 	// 描画
-	void Draw();
+	void Draw(float scroll);
+
+	// 当たり判定
+	void ObjectCollision(Player* p);
 
 private: // メンバ関数
 	// ステージ読み込み
@@ -44,7 +49,7 @@ private: // メンバ関数
 	// コマンド読み込み
 	void LoadStageCommands();
 	// ストリームコマンド読み込み
-	void LoadStreamCommands(std::istringstream& stream, std::string& word, ObjectParam& objectParam);
+	void LoadStreamCommands(std::istringstream& stream, std::string& word, ObjectStatus& status);
 	// ギミック生成
-	void PopGimmick(ObjectNum objectNum, const ObjectParam& objectParam);
+	void PopGimmick(ObjectNum objectNum, const ObjectStatus& status);
 };

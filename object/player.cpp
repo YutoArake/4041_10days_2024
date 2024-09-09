@@ -6,7 +6,7 @@ void Player::Initialize()
 	image_player = LoadGraph("Resources/textures/player.png");
 }
 
-void Player::Update(char keys[256])
+void Player::Update(char keys[256], float& scroll)
 {
 	//_‘f‚Íí‚ÉŒ¸‚é
 	player.O2--;
@@ -23,10 +23,10 @@ void Player::Update(char keys[256])
 	}
 
 	//ˆÚ“®
-	Move(keys);
+	Move(keys, scroll);
 }
 
-void Player::Draw()
+void Player::Draw(float scroll)
 {
 	//DrawBox(0, 0, 10, 10, GetColor(255, 0, 0), true);
 
@@ -58,7 +58,7 @@ void Player::Draw()
 
 
 //ˆÚ“®
-void Player::Move(char keys[256])
+void Player::Move(char keys[256], float& scroll)
 {
 #pragma region “¥‚ñ’£‚é
 	if (keys[KEY_INPUT_UP] == true) {
@@ -78,11 +78,11 @@ void Player::Move(char keys[256])
 
 #pragma region ‰º‚É‚ä‚Á‚­‚è
 	if (keys[KEY_INPUT_DOWN] == true) {
-		player.Y += player.FallSpeed*2;
+		player.Y += player.FallSpeed * 2;
 
 		//ƒXƒNƒ[ƒ‹‰ÁZ
 		if (player.Y >= 300 && player.Y <= 2220) {
-			scroll += player.FallSpeed*2;
+			scroll += player.FallSpeed * 2;
 		}
 
 		//‰æ–Ê‚©‚ço‚È‚¢‚æ‚¤‚ÉˆÚ“®§Œä
@@ -105,7 +105,7 @@ void Player::Move(char keys[256])
 	}
 
 #pragma endregion 
-	
+
 #pragma region ¶‰EˆÚ“®
 	if (keys[KEY_INPUT_LEFT] == true) {
 		player.X -= player.MoveSpeed;
@@ -127,29 +127,20 @@ void Player::Move(char keys[256])
 #pragma endregion 
 }
 
-//"scroll"‚ğ“n‚·
-float Player::GetScroll(){
-	return scroll;
-}
-
 //“–‚½‚è”»’è
-void Player::Collision(int x1, int y1, int x2, int y2,char tag)
+void Player::Collision(char tag)
 {
-	if(x1< player.X + player.R && player.X - player.R < x2){
-		if (y1 < player.Y + player.R && player.Y - player.R < y2) {
-			//“–‚½‚Á‚½‚Ì‚ª“G‚¾‚Á‚½
-			if(tag == (char)"enemy" && isInvincible == false){
-				player.HP--;
-				//–³“GŠÔƒXƒ^[ƒg
-				isInvincible = true;
-			}
+	//“–‚½‚Á‚½‚Ì‚ª“G‚¾‚Á‚½
+	if (tag == (char)"enemy" && isInvincible == false) {
+		player.HP--;
+		//–³“GŠÔƒXƒ^[ƒg
+		isInvincible = true;
+	}
 
-			//“–‚½‚Á‚½‚Ì‚ªƒAƒCƒeƒ€‚¾‚Á‚½
-			if(tag == (char)"item")
-			{
-				player.O2 += 500;
-			}
-		}
+	//“–‚½‚Á‚½‚Ì‚ªƒAƒCƒeƒ€‚¾‚Á‚½
+	if (tag == (char)"item")
+	{
+		player.O2 += 500;
 	}
 }
 

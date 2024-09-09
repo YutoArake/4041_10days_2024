@@ -191,6 +191,11 @@
     <ClInclude Include="scene\SceneManager.h" />
     <ClInclude Include="Stage.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resources\stages\stage1.txt" />
+    <Text Include="Resources\stages\stage2.txt" />
+    <Text Include="Resources\stages\stage3.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

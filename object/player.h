@@ -16,12 +16,11 @@ class Player
 {
 public:
 	void Initialize();
-	void Update(char keys[256]);
-	void Draw();
+	void Update(char keys[256], float& scroll);
+	void Draw(float scroll);
 
-	void Move(char keys[256]);
-	float GetScroll();
-	void Collision(int x1, int y1, int x2, int y2, char tag);
+	void Move(char keys[256], float& scroll);
+	void Collision(char tag);
 	PlayerStatus GetStatus();
 
 private:
@@ -35,7 +34,6 @@ private:
 		1000,	//酸素
 	};
 
-	float scroll;//スクロール座標
 	bool isInvincible;//無敵フラグ
 	int invincibleTimer;//無敵用のタイマー
 	int image_player;//player用の画像

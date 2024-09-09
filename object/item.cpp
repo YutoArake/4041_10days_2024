@@ -1,47 +1,33 @@
 #include "item.h"
 
-void Item::Initialize()
+void Item::Initialize(ObjectStatus status)
 {
+	// ステータス代入
+	status_.X = status.X;
+	status_.Y = status.Y;
+	status_.R = status.R;
+	status_.Tag = status.Tag;
+}
 
+void Item::Finalize()
+{
 }
 
 void Item::Update()
 {
-	
 }
 
-void Item::Draw()
+void Item::Draw(float scroll)
 {
 	//DrawBox(0, 0, 10, 10, GetColor(255, 0, 0), true);
 
-	DrawBox(item.X - item.R, item.Y - item.R - scroll, item.X + item.R, item.Y + item.R - scroll,
+	DrawBox(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
 		GetColor(0, 0, 200), true);
 }
 
-void Item::SetScroll(float scroll)
-{
-	this->scroll = scroll;
-}
-
-ItemStatus Item::GetStatus()
-{
-	return item;
-}
-
-void Item::SetStatus(float x, float y, float r)
-{
-	item.X = x;
-	item.Y = y;
-	item.R = r;
-}
-
 //当たり判定
-void Item::Collision(int x1, int y1, int x2, int y2)
+void Item::Collision()
 {
-	if (x1 < item.X + item.R && item.X - item.R < x2) {
-		if (y1 < item.Y + item.R && item.Y - item.R < y2) {
-			//当たったら消える
-			//item.X = -50;
-		}
-	}
+	//当たったら消える
+	status_.X = -50;
 }

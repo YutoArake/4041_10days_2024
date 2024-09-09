@@ -7,8 +7,9 @@ void GamePlayScene::Initialize()
 	enemy_.Initialize();
 	image_back = LoadGraph("Resources/textures/back.png");//背景画像
 	player->Initialize();
-	item->Initialize();
 	stage.Initialize(GameSelectScene::stageNum_);
+
+	scroll = 0;
 }
 
 void GamePlayScene::Finalize()
@@ -31,36 +32,19 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 	}
 
 	// オブジェクトの更新
-	stage.Update();
-	player->Update(keys);
+	player->Update(keys, scroll);
 	enemy_.Move();
-	item->Update();
+	stage.Update();
 
-	//スクロール座標の受け渡し
-	scroll = player->GetScroll();
-	item->SetScroll(scroll);
-
-	//当たり判定
-	player->Collision(
-		item->GetStatus().X - item->GetStatus().R,
-		item->GetStatus().Y - item->GetStatus().R,
-		item->GetStatus().X + item->GetStatus().R,
-		item->GetStatus().Y + item->GetStatus().R,
-		(char)item->GetStatus().Teg);
-
-	item->Collision(
-		player->GetStatus().X - player->GetStatus().R,
-		player->GetStatus().Y - player->GetStatus().R,
-		player->GetStatus().X + player->GetStatus().R,
-		player->GetStatus().Y + player->GetStatus().R);
+	// 当たり判定
+	stage.ObjectCollision(player);
 }
 
 void GamePlayScene::Draw()
 {
 	DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back, true);//背景のため、一番上に！
-	stage.Draw();
-	item->Draw();
+	stage.Draw(scroll);
 	enemy_.Draw();
-	player->Draw();
+	player->Draw(scroll);
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "play");
 }

@@ -1,34 +1,23 @@
 #pragma once
 #include "DxLib.h"
+#include "Object.h"
 
-struct ItemStatus
+/// <summary>
+/// アイテム
+/// </summary>
+class Item : public Object
 {
-	float X;		//座標X
-	float Y;		//座標Y
-	float R;		//半径
-	char Teg;	//タグ
-};
-
-class Item
-{
-public:
-	void Initialize();
-	void Update();
-	void Draw();
-
-	void Collision(int x1, int y1, int x2, int y2);
-	ItemStatus GetStatus();
-	void SetStatus(float x,float y,float r);
-
-	void SetScroll(float scroll);
+public: // メンバ関数
+	// 初期化
+	void Initialize(ObjectStatus status) override;
+	// 終了処理
+	void Finalize() override;
+	// 更新
+	void Update() override;
+	// 描画
+	void Draw(float scroll) override;
+	// 当たり判定
+	void Collision() override;
 
 private:
-	struct ItemStatus item = {
-		640,	//座標X
-		900,	//座標Y
-		20,		//半径
-		(char)"item"	//tag
-	};
-
-	float scroll;
 };

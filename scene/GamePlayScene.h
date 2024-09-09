@@ -2,7 +2,6 @@
 #include "BaseScene.h"
 #include "Enemy.h"
 #include "player.h"
-#include "item.h"
 #include "Stage.h"
 
 /// <summary>
@@ -19,9 +18,8 @@ private: // メンバ変数
 public: // �����o�֐�
 	
 	Player* player = new Player();//player
-	Item* item = new Item();
 
-	int scroll; //スクロール座標
+	float scroll; //スクロール座標
 	int image_back;//背景画像
 
 public: // メンバ関数
