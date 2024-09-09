@@ -120,3 +120,8 @@ void Player::Collision(int x1, int y1, int x2, int y2,char tag)
 		}
 	}
 }
+
+PlayerStatus Player::GetStatus()
+{
+	return player;
+}

@@ -1,7 +1,7 @@
 #pragma once
 #include "DxLib.h"
 
-struct Status
+struct PlayerStatus
 {
 	float X;	//座標X
 	float Y;	//座標Y
@@ -21,9 +21,10 @@ public:
 	void Move(char keys[256]);
 	float GetScroll();
 	void Collision(int x1, int y1, int x2, int y2, char tag);
+	PlayerStatus GetStatus();
 
 private:
-	struct Status player = {
+	struct PlayerStatus player = {
 		640,//座標X
 		64,	//座標Y
 		64,	//半径

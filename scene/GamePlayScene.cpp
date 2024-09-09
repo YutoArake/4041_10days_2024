@@ -41,6 +41,11 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 	tag = (char)"item";
 
 	player->Collision(x - r, y - r, x + r, y + r, (char)tag);
+	item->Collision(
+		player->GetStatus().X - player->GetStatus().R,
+		player->GetStatus().Y - player->GetStatus().R,
+		player->GetStatus().X + player->GetStatus().R,
+		player->GetStatus().Y + player->GetStatus().R);
 
 }
 
