@@ -8,7 +8,8 @@ struct PlayerStatus
 	float R;	//半径
 	float MoveSpeed;//移動速度
 	float FallSpeed;//落下速度
-	int HP;
+	int HP;	//ライフ
+	int O2; //酸素
 };
 
 class Player
@@ -25,14 +26,17 @@ public:
 
 private:
 	struct PlayerStatus player = {
-		640,//座標X
-		64,	//座標Y
-		64,	//半径
-		5,	//移動速度
-		1,	//落下速度
-		3,  //HP
+		640,	//座標X
+		64,		//座標Y
+		64,		//半径
+		5,		//移動速度
+		1,		//落下速度
+		3,		//HP
+		1000,	//酸素
 	};
 
-	float scroll;
+	float scroll;//スクロール座標
+	bool isInvincible;
+	int invincibleTimer;
 };
 

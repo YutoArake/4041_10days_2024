@@ -26,7 +26,7 @@ private:
 		640,	//À•WX
 		900,	//À•WY
 		20,		//”¼Œa
-		(char)"item"	//tag
+		(char)"enemy"	//tag
 	};
 
 	float scroll;

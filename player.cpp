@@ -2,11 +2,25 @@
 
 void Player::Initialize()
 {
-
+	isInvincible = false;
 }
 
 void Player::Update(char keys[256])
 {
+	//Ž_‘f‚Íí‚ÉŒ¸‚é
+	player.O2--;
+
+	//–³“GŽžŠÔ
+	int invincibleTime = 60;
+	if (isInvincible == true) {
+		invincibleTimer++;
+
+		if (invincibleTimer >= invincibleTime) {
+			isInvincible = false;
+			invincibleTimer = 0;
+		}
+	}
+
 	//ˆÚ“®
 	Move(keys);
 }
@@ -20,9 +34,12 @@ void Player::Draw()
 
 
 	//ƒfƒoƒbƒN
-	DrawFormatString(3, 0, GetColor(0, 0, 0), "posX: %f", player.X);
-	DrawFormatString(3, 15, GetColor(0, 0, 0), "posY: %f", player.Y);
-	DrawFormatString(3, 30, GetColor(0, 0, 0), "HP: %d", player.HP);
+	DrawFormatString(3, 0, GetColor(255, 255, 255), "posX: %f", player.X);
+	DrawFormatString(3, 15, GetColor(255, 255, 255), "posY: %f", player.Y);
+	DrawFormatString(3, 30, GetColor(255, 255, 255), "HP: %d", player.HP);
+	DrawFormatString(3, 45, GetColor(255, 255, 255), "O2: %d", player.O2);
+	DrawFormatString(3, 60, GetColor(255, 255, 255), "–³“G: %d", isInvincible);
+	DrawFormatString(3, 75, GetColor(255, 255, 255), "timer: %d", invincibleTimer);
 }
 
 
@@ -107,15 +124,16 @@ void Player::Collision(int x1, int y1, int x2, int y2,char tag)
 	if(x1< player.X + player.R && player.X - player.R < x2){
 		if (y1 < player.Y + player.R && player.Y - player.R < y2) {
 			//“–‚½‚Á‚½‚Ì‚ª“G‚¾‚Á‚½Žž
-			if(tag == (char)"enemy")
-			{
-
+			if(tag == (char)"enemy" && isInvincible == false){
+				player.HP--;
+				//–³“GŽžŠÔƒXƒ^[ƒg
+				isInvincible = true;
 			}
 
 			//“–‚½‚Á‚½‚Ì‚ªƒAƒCƒeƒ€‚¾‚Á‚½Žž
 			if(tag == (char)"item")
 			{
-				player.HP += 1;
+				player.O2 += 500;
 			}
 		}
 	}
