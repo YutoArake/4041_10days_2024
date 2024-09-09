@@ -1,34 +1,43 @@
 #pragma once
 #include "BaseScene.h"
+#include "player.h"
+#include "item.h"
 #include "Stage.h"
 
 /// <summary>
-/// ƒQ[ƒ€ƒvƒŒƒCƒV[ƒ“
+/// ã‚²ãƒ¼ãƒ ãƒ—ãƒ¬ã‚¤ã‚·ãƒ¼ãƒ³
 /// </summary>
 class GamePlayScene : public BaseScene
 {
-private: // ƒƒ“ƒo•Ï”
+private: // ãƒ¡ãƒ³ãƒå¤‰æ•°
 	Stage stage;
 	bool isClear = false;
 
-public: // ƒƒ“ƒoŠÖ”
+	
+	Player* player = new Player();//player
+	Item* item = new Item();
+
+	int scroll; //ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åº§æ¨™
+	int image_back;//èƒŒæ™¯ç”»åƒ
+
+public: // ãƒ¡ãƒ³ãƒé–¢æ•°
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize() override;
 
 	/// <summary>
-	/// I—¹ˆ—
+	/// çµ‚äº†å‡¦ç†
 	/// </summary>
 	void Finalize() override;
 
 	/// <summary>
-	/// –ˆƒtƒŒ[ƒ€XV
+	/// æ¯ãƒ•ãƒ¬ãƒ¼ãƒ æ›´æ–°
 	/// </summary>
 	void Update(char keys[256], char oldkeys[256]) override;
 
 	/// <summary>
-	///  •`‰æ
+	///  æç”»
 	/// </summary>
 	void Draw() override;
 };
