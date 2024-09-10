@@ -28,4 +28,6 @@ private:
 	int saveSpeed;
 	bool isMove;
 	int stopTimer;
+	int randTimer;
+	int randSpeed;
 };

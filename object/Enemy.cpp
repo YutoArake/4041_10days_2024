@@ -12,6 +12,7 @@ void Enemy::Initialize(ObjectStatus status)
 	speed = 5;
 	saveSpeed = speed;
 	isMove = true;
+	randSpeed = 1;
 }
 
 void Enemy::Finalize()
@@ -59,7 +60,7 @@ void Enemy::Move()
 #pragma endregion
 
 #pragma region ¶‰EˆÚ“®ˆê’è‚Å~‚Ü‚é
-	int stopTime = 30;
+	/*int stopTime = 30;
 	if (isMove == true) {
 		status_.X = status_.X + speed;
 	}
@@ -92,9 +93,30 @@ void Enemy::Move()
 				isMove = true;
 			}
 		}
-	}
+	}*/
 
 #pragma endregion
 
+#pragma region ¶‰E‘¬“x•Ï“®
+	int randTime = 30;
+	
+	randTimer++;
+	if(randTimer >= randTime)
+	{
+		randSpeed = GetRand(30);
+		randTimer = 0;
+	}
+
+	status_.X = status_.X + speed * (randSpeed * 0.1);
+	
+	if (status_.X >= 1280)
+	{
+		speed = -saveSpeed;
+	}
+	else if (status_.X <= 0)
+	{
+		speed = saveSpeed;
+	}
+#pragma endregion
 	
 }
