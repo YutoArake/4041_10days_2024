@@ -9,10 +9,10 @@ void Enemy::Initialize(ObjectStatus status)
 	status_.R = status.R;
 	status_.Tag = status.Tag;
 
-	speed = 5;
-	saveSpeed = speed;
-	isMove = true;
-	randSpeed = 1;
+	speed_ = 5;
+	saveSpeed_ = speed_;
+	isMove_ = true;
+	randSpeed_ = 1;
 }
 
 void Enemy::Finalize()
@@ -31,7 +31,7 @@ void Enemy::Draw(float scroll)
 	DrawBox(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
 		GetColor(255, 0, 0), true);
 
-	DrawFormatString(3, 90, GetColor(255, 255, 255), "isMove: %d", isMove);
+	DrawFormatString(3, 90, GetColor(255, 255, 255), "isMove: %d", isMove_);
 }
 
 //“–‚½‚è”»’è
@@ -100,23 +100,26 @@ void Enemy::Move()
 #pragma region ¶‰E‘¬“x•Ï“®
 	int randTime = 30;
 	
-	randTimer++;
-	if(randTimer >= randTime)
+	randTimer_++;
+	if(randTimer_ >= randTime)
 	{
-		randSpeed = GetRand(30);
-		randTimer = 0;
+		randSpeed_ = GetRand(30);
+		randTimer_ = 0;
 	}
 
-	status_.X = status_.X + speed * (randSpeed * 0.1);
+	status_.X = status_.X + speed_ * (randSpeed_ * 0.1);
 	
 	if (status_.X >= 1280)
 	{
-		speed = -saveSpeed;
+		speed_ = -saveSpeed_;
 	}
 	else if (status_.X <= 0)
 	{
-		speed = saveSpeed;
+		speed_ = saveSpeed_;
 	}
 #pragma endregion
 	
+#pragma region ã‚É‚­‚é
+	
+#pragma endregion
 }

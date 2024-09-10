@@ -24,10 +24,13 @@ public: // ƒƒ“ƒoŠÖ”
 	void Move();
 
 private:
-	int speed;
-	int saveSpeed;
-	bool isMove;
-	int stopTimer;
-	int randTimer;
-	int randSpeed;
+	int speed_;
+
+	int saveSpeed_;
+	bool isMove_;
+	int stopTimer_;
+
+	int randTimer_;
+	int randSpeed_;
+
 };
