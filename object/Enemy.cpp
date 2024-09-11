@@ -3,7 +3,9 @@
 
 void Enemy::Initialize(ObjectStatus status)
 {
-	image_enemy = LoadGraph("Resources/textures/enemy_1.png");
+	imageEnemy1_ = LoadGraph("Resources/textures/enemy_1.png");
+	imageEnemy2_ = LoadGraph("Resources/textures/enemy_2.png");
+	imageEnemy3_ = LoadGraph("Resources/textures/enemy_3.png");
 	// ステータス代入
 	status_.X = status.X;
 	status_.Y = status.Y;
@@ -31,8 +33,26 @@ void Enemy::Update()
 
 void Enemy::Draw(float scroll)
 {
-	DrawExtendGraph(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
-		image_enemy, true);
+	
+
+	switch (status_.type)
+	{
+	case 1:
+		DrawExtendGraph(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
+			imageEnemy1_, true);
+		break;
+
+	case 2:
+		DrawExtendGraph(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
+			imageEnemy2_, true);
+		break;
+
+	case 3:
+		DrawExtendGraph(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
+			imageEnemy3_, true);
+		break;
+	}
+
 }
 
 //当たり判定
