@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="object\Enemy.cpp" />
+    <ClCompile Include="object\FireEffect.cpp" />
     <ClCompile Include="object\item.cpp" />
     <ClCompile Include="object\Meteor.cpp" />
     <ClCompile Include="object\Object.cpp" />
@@ -173,6 +174,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="object\Enemy.h" />
+    <ClInclude Include="object\FireEffect.h" />
     <ClInclude Include="object\item.h" />
     <ClInclude Include="object\Meteor.h" />
     <ClInclude Include="object\Object.h" />

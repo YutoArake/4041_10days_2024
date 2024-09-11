@@ -30,8 +30,12 @@ void Enemy::Draw(float scroll)
 {
 	//DrawBox(0, 0, 10, 10, GetColor(255, 0, 0), true);
 
-	DrawBox(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
-		GetColor(255, 0, 0), true);
+	/*DrawBox(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
+		GetColor(255, 0, 0), true);*/
+
+
+	DrawExtendGraph(status_.X - status_.R, status_.Y - status_.R, status_.X + status_.R, status_.Y + status_.R,
+		image_enemy, true);
 
 	DrawFormatString(3, 90, GetColor(255, 255, 255), "isMove: %d", isMove_);
 }
@@ -48,7 +52,7 @@ void Enemy::Move()
 #pragma region 
 #pragma endregion
 
-#pragma region 左右移動一定
+#pragma region /*左右移動一定*/
 	/*status_.X = status_.X + speed;
 
 	if (status_.X >= 1280)
@@ -61,7 +65,7 @@ void Enemy::Move()
 	}*/
 #pragma endregion
 
-#pragma region 左右移動一定で止まる
+#pragma region /*左右移動一定で止まる*/
 	/*int stopTime = 30;
 	if (isMove == true) {
 		status_.X = status_.X + speed;
@@ -99,9 +103,6 @@ void Enemy::Move()
 
 #pragma endregion
 
-	DrawExtendGraph(enemy.X - enemy.R, enemy.Y - enemy.R , enemy.X + enemy.R, enemy.Y + enemy.R ,
-		image_enemy, true);
-
 #pragma region 左右速度変動
 	int randTime = 30;
 	
@@ -124,7 +125,7 @@ void Enemy::Move()
 	}
 #pragma endregion
 	
-#pragma region 上にくる
+#pragma region /*上にくる*/
 	
 #pragma endregion
 }

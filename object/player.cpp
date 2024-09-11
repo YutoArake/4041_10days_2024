@@ -37,7 +37,7 @@ void Player::Draw(float scroll)
 			image_player, true);
 	}
 	//無敵時
-	else 
+	else {
 		//点滅させる
 		if (invincibleTimer % 5 == 0) {
 			DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
@@ -74,7 +74,7 @@ void Player::Move(char keys[256], float& scroll)
 	}
 #pragma endregion 
 
-#pragma region 下にゆっくり
+#pragma region /*下にゆっくり*/
 	if (keys[KEY_INPUT_DOWN] == true) {
 		player.Y += player.FallSpeed * 2;
 

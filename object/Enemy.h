@@ -2,7 +2,6 @@
 #include "DxLib.h"
 #include <math.h>
 
-#include "DxLib.h"
 #include "Object.h"
 
 /// <summary>
