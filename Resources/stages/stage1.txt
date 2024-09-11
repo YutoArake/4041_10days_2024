@@ -1,4 +1,4 @@
 meteor pos(600 1000) rad(32) tag(item)
-item pos(640 900) rad(20) tag(item)
+item pos(640 900) rad(30) tag(item)
 pos(640 900) rad(20) tag(item)
 enemy pos(640 500) rad(20) tag(enemy)
