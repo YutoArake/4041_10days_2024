@@ -1,2 +1,3 @@
 meteor pos(600 1000) rad(32) tag(item)
 item pos(640 900) rad(20) tag(item)
+pos(640 900) rad(20) tag(item)

@@ -35,6 +35,10 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 	player->Update(keys, scroll);
 	enemy_.Move();
 	stage.Update();
+	if (player->GetStatus().Y >= 2880 - player->GetStatus().R)
+	{
+		isClear = true;
+	}
 
 	// 当たり判定
 	stage.ObjectCollision(player);
@@ -44,7 +48,7 @@ void GamePlayScene::Draw()
 {
 	DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back, true);//背景のため、一番上に！
 	stage.Draw(scroll);
-	//enemy_.Draw();
+	enemy_.Draw();
 	player->Draw(scroll);
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "play");
 }

@@ -3,7 +3,7 @@
 
 void Enemy::Initialize()
 {
-
+	image_enemy = LoadGraph("Resources/textures/enemy_1.png");
 }
 
 void Enemy::Update()
@@ -29,5 +29,8 @@ void Enemy::Draw()
 {
 	DrawBox(enemy.X - enemy.R, enemy.Y - enemy.R, enemy.X + enemy.R, enemy.Y + enemy.R,
 		GetColor(255, 0, 0), true);
+
+	DrawExtendGraph(enemy.X - enemy.R, enemy.Y - enemy.R , enemy.X + enemy.R, enemy.Y + enemy.R ,
+		image_enemy, true);
 
 }

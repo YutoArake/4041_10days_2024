@@ -32,16 +32,16 @@ void Player::Draw(float scroll)
 
 	//í èÌéû
 	if (isInvincible == false) {
-		DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
-			GetColor(0, 255, 0), true);
+		/*DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
+			GetColor(0, 255, 0), true);*/
 
 		DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
 			image_player, true);
 	}
 	//ñ≥ìGéû
 	else {
-		DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
-			GetColor(0, 200, 0), true);
+		/*DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
+			GetColor(0, 200, 0), true);*/
 
 		DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
 			image_player, true);

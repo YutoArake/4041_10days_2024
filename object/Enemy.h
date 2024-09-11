@@ -1,5 +1,6 @@
 #pragma once
 #include "DxLib.h"
+#include <math.h>
 
 struct Status
 {
@@ -32,5 +33,6 @@ private:
 	};
 
 	bool flag = true;
+	int image_enemy; //Enemy—p‚Ì‰æ‘œ
 
 };

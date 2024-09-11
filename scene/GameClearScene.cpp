@@ -11,7 +11,7 @@ void GameClearScene::Initialize()
 	}
 
 	// 画像データ
-	bgGraph = LoadGraph("Resources/textures/bg.png");
+	bgGraph = LoadGraph("Resources/textures/clear.png");
 
 	// 音データ
 	//musicHandle = LoadSoundMem("Resources/sounds/.mp3");
