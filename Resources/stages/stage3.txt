@@ -1,1 +1,5 @@
+meteor pos(-100 1000) rad(32) tag(item)
+meteor pos(1300 1000) rad(32) tag(item)
 meteor pos(600 1000) rad(32) tag(item)
+meteor pos(-100 -100) rad(32) tag(item)
+meteor pos(1300 -100) rad(32) tag(item)
