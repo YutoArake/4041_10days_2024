@@ -34,7 +34,7 @@ void Enemy::Draw(float scroll)
 		GetColor(255, 0, 0), true);*/
 
 
-	DrawExtendGraph(status_.X - status_.R, status_.Y - status_.R, status_.X + status_.R, status_.Y + status_.R,
+	DrawExtendGraph(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
 		image_enemy, true);
 
 	DrawFormatString(3, 90, GetColor(255, 255, 255), "isMove: %d", isMove_);

@@ -2,23 +2,37 @@
 
 void Player::Initialize()
 {
-	isInvincible = false;
-	image_player = LoadGraph("Resources/textures/player.png");
+	isInvincible_ = false;
+	fullGauge_ = player_.O2;
+
+	imagePlayer_ = LoadGraph("Resources/textures/player.png");
+	imageGauge_ = LoadGraph("Resources/textures/player_gauge.png");
 }
 
 void Player::Update(char keys[256], float& scroll)
 {
 	//酸素は常に減る
-	player.O2--;
+	player_.O2--;
+	//0になったらストップ
+	if (player_.O2 <= 0) {
+		player_.O2 = 0;
+	}
+
+	//ゲージ
+	float A = player_.X + player_.R - 4;
+	float B = player_.X - player_.R + 4;
+
+	gauge_ = B + ((B - A)/fullGauge_) * -player_.O2;
+	gaugeColor_ = 255 * (player_.O2 / fullGauge_);
 
 	//無敵時間
 	int invincibleTime = 60;
-	if (isInvincible == true) {
-		invincibleTimer++;
+	if (isInvincible_ == true) {
+		invincibleTimer_++;
 
-		if (invincibleTimer >= invincibleTime) {
-			isInvincible = false;
-			invincibleTimer = 0;
+		if (invincibleTimer_ >= invincibleTime) {
+			isInvincible_ = false;
+			invincibleTimer_ = 0;
 		}
 	}
 
@@ -28,30 +42,40 @@ void Player::Update(char keys[256], float& scroll)
 
 void Player::Draw(float scroll)
 {
+	//ロケット
 	//通常時
-	if (isInvincible == false) {
-		/*DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
-			GetColor(0, 255, 0), true);*/
-
-		DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
-			image_player, true);
+	if (isInvincible_ == false) {
+		DrawExtendGraph(player_.X - player_.R, player_.Y - player_.R - scroll, player_.X + player_.R, player_.Y + player_.R - scroll,
+			imagePlayer_, true);
 	}
 	//無敵時
 	else {
 		//点滅させる
-		if (invincibleTimer % 5 == 0) {
-			DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
-				image_player, true);
+		if (invincibleTimer_ % 5 == 0) {
+			DrawExtendGraph(player_.X - player_.R, player_.Y - player_.R - scroll, player_.X + player_.R, player_.Y + player_.R - scroll,
+				imagePlayer_, true);
 		}
 	}
 
+
+	//ゲージ
+	DrawBox(
+		player_.X - player_.R + 4,
+		player_.Y - player_.R + 116 - scroll,
+		gauge_,
+		player_.Y + player_.R - scroll,
+		GetColor(255 - gaugeColor_, gaugeColor_, 0), true);
+
+	//ゲージの枠
+	DrawExtendGraph(player_.X - player_.R, player_.Y - player_.R - scroll, player_.X + player_.R, player_.Y + player_.R - scroll,
+		imageGauge_, true);
+
 	//デバック
-	DrawFormatString(3, 0, GetColor(255, 255, 255), "posX: %f", player.X);
-	DrawFormatString(3, 15, GetColor(255, 255, 255), "posY: %f", player.Y);
-	DrawFormatString(3, 30, GetColor(255, 255, 255), "HP: %d", player.HP);
-	DrawFormatString(3, 45, GetColor(255, 255, 255), "O2: %d", player.O2);
-	DrawFormatString(3, 60, GetColor(255, 255, 255), "無敵: %d", isInvincible);
-	DrawFormatString(3, 75, GetColor(255, 255, 255), "timer: %d", invincibleTimer);
+	DrawFormatString(3, 15, GetColor(255, 255, 255), "O2: %d", player_.O2);
+	DrawFormatString(3, 30, GetColor(255, 255, 255), "full: %f", fullGauge_);
+	DrawFormatString(3, 45, GetColor(255, 255, 255), "長さ: %f", player_.X + player_.R - 4);
+	DrawFormatString(3, 60, GetColor(255, 255, 255), "gauge: %f", gauge_);
+
 }
 
 
@@ -60,66 +84,66 @@ void Player::Move(char keys[256], float& scroll)
 {
 #pragma region 踏ん張る
 	if (keys[KEY_INPUT_UP] == true) {
-		player.Y -= player.FallSpeed * 0.8;
+		player_.Y -= player_.FallSpeed * 0.8;
 
 		//スクロール加算
-		if (player.Y >= 300 && player.Y <= 2220) {
-			scroll -= player.FallSpeed * 0.8;
+		if (player_.Y >= 300 && player_.Y <= 2220) {
+			scroll -= player_.FallSpeed * 0.8;
 		}
 
 		//画面から出ないように移動制御
-		if (player.Y <= 0 + player.R) {
-			player.Y = 0 + player.R;
+		if (player_.Y <= 0 + player_.R) {
+			player_.Y = 0 + player_.R;
 		}
 	}
 #pragma endregion 
 
 #pragma region /*下にゆっくり*/
 	if (keys[KEY_INPUT_DOWN] == true) {
-		player.Y += player.FallSpeed * 2;
+		player_.Y += player_.FallSpeed * 2;
 
 		//スクロール加算
-		if (player.Y >= 300 && player.Y <= 2220) {
-			scroll += player.FallSpeed * 2;
+		if (player_.Y >= 300 && player_.Y <= 2220) {
+			scroll += player_.FallSpeed * 2;
 		}
 
 		//画面から出ないように移動制御
-		if (player.Y >= 2880 - player.R) {
-			player.Y = 2880 - player.R;
+		if (player_.Y >= 2880 - player_.R) {
+			player_.Y = 2880 - player_.R;
 		}
 	}
 
 	//常にゆっくり落下
-	player.Y += player.FallSpeed;
+	player_.Y += player_.FallSpeed;
 
 	//スクロール加算
-	if (player.Y >= 300 && player.Y <= 2220) {
-		scroll += player.FallSpeed;
+	if (player_.Y >= 300 && player_.Y <= 2220) {
+		scroll += player_.FallSpeed;
 	}
 
 	//画面から出ないように移動制御
-	if (player.Y >= 2880 - player.R) {
-		player.Y = 2880 - player.R;
+	if (player_.Y >= 2880 - player_.R) {
+		player_.Y = 2880 - player_.R;
 	}
 
 #pragma endregion 
 
 #pragma region 左右移動
 	if (keys[KEY_INPUT_LEFT] == true) {
-		player.X -= player.MoveSpeed;
+		player_.X -= player_.MoveSpeed;
 
 		//画面から出ないように移動制御
-		if (player.X <= 0 + player.R) {
-			player.X = 0 + player.R;
+		if (player_.X <= 0 + player_.R) {
+			player_.X = 0 + player_.R;
 		}
 	}
 
 	if (keys[KEY_INPUT_RIGHT] == true) {
-		player.X += player.MoveSpeed;
+		player_.X += player_.MoveSpeed;
 
 		//画面から出ないように移動制御
-		if (player.X >= 1280 - player.R) {
-			player.X = 1280 - player.R;
+		if (player_.X >= 1280 - player_.R) {
+			player_.X = 1280 - player_.R;
 		}
 	}
 #pragma endregion 
@@ -129,21 +153,21 @@ void Player::Move(char keys[256], float& scroll)
 void Player::Collision(char tag)
 {
 	//当たったのが敵だった時
-	if (tag == (char)'e' && isInvincible == false) {
-		player.HP--;
+	if (tag == (char)'e' && isInvincible_ == false) {
+		player_.HP--;
 		//無敵時間スタート
-		isInvincible = true;
+		isInvincible_ = true;
 	}
 
 	//当たったのがアイテムだった時
 	if (tag == (char)'i')
 	{
-		player.O2 += 500;
+		player_.O2 += 500;
 
 	}
 }
 
 PlayerStatus Player::GetStatus()
 {
-	return player;
+	return player_;
 }
