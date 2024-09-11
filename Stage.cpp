@@ -109,6 +109,9 @@ void Stage::LoadStreamCommands(std::istringstream& stream, std::string& word, Ob
 		else if (word.find("rad") == 0) {
 			stream >> status.R;
 		}
+		else if (word.find("type") == 0) {
+			stream >> status.type;
+		}
 		else if (word.find("tag") == 0) {
 			stream >> status.Tag;
 		}

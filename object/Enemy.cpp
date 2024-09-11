@@ -8,6 +8,7 @@ void Enemy::Initialize(ObjectStatus status)
 	status_.X = status.X;
 	status_.Y = status.Y;
 	status_.R = status.R;
+	status_.type = status.type;
 	status_.Tag = status.Tag;
 
 	speed_ = 5;
@@ -15,6 +16,8 @@ void Enemy::Initialize(ObjectStatus status)
 	isMove_ = true;
 	randSpeed_ = 1;//乱数用
 
+	stopTime_ = 30;
+	randTime_ = 30;
 }
 
 void Enemy::Finalize()
@@ -44,80 +47,81 @@ void Enemy::Move()
 #pragma region 
 #pragma endregion
 
-#pragma region /*左右移動一定*/
-	/*status_.X = status_.X + speed;
-
-	if (status_.X >= 1280)
+	switch (status_.type)
 	{
-		speed = -speed;
-	}
-	else if (status_.X <= 0)
-	{
-		speed = -speed;
-	}*/
-#pragma endregion
+	case 1:
+#pragma region
+		status_.X = status_.X + speed_;
 
-#pragma region /*左右移動一定で止まる*/
-	/*int stopTime = 30;
-	if (isMove == true) {
-		status_.X = status_.X + speed;
-	}
-	
-
-	if (status_.X >= 1280)
-	{
-		speed = -saveSpeed;
-		isMove = false;
-		if(isMove == false)
+		if (status_.X >= 1280)
 		{
-			stopTimer++;
-			if(stopTimer >= stopTime)
+			speed_ = -speed_;
+		}
+		else if (status_.X <= 0)
+		{
+			speed_ = -speed_;
+		}
+#pragma endregion
+		break;
+	case 2:
+#pragma region
+		if (isMove_ == true) {
+			status_.X = status_.X + speed_;
+		}
+
+
+		if (status_.X >= 1280)
+		{
+			speed_ = -saveSpeed_;
+			isMove_ = false;
+			if (isMove_ == false)
 			{
-				stopTimer = 0;
-				isMove = true;
+				stopTimer_++;
+				if (stopTimer_ >= stopTime_)
+				{
+					stopTimer_ = 0;
+					isMove_ = true;
+				}
 			}
 		}
-	}
-	else if (status_.X <= 0)
-	{
-		speed = saveSpeed;
-		isMove = false;
-		if (isMove == false)
+		else if (status_.X <= 0)
 		{
-			stopTimer++;
-			if (stopTimer >= stopTime)
+			speed_ = saveSpeed_;
+			isMove_ = false;
+			if (isMove_ == false)
 			{
-				stopTimer = 0;
-				isMove = true;
+				stopTimer_++;
+				if (stopTimer_ >= stopTime_)
+				{
+					stopTimer_ = 0;
+					isMove_ = true;
+				}
 			}
 		}
-	}*/
 
 #pragma endregion
 
-#pragma region 左右速度変動
-	int randTime = 30;
-	
-	randTimer_++;
-	if(randTimer_ >= randTime)
-	{
-		randSpeed_ = GetRand(30);
-		randTimer_ = 0;
-	}
+		break;
+	case 3:
+#pragma region
+		randTimer_++;
+		if (randTimer_ >= randTime_)
+		{
+			randSpeed_ = GetRand(30);
+			randTimer_ = 0;
+		}
 
-	status_.X = status_.X + speed_ * (randSpeed_ * 0.1);
-	
-	if (status_.X >= 1280)
-	{
-		speed_ = -saveSpeed_;
-	}
-	else if (status_.X <= 0)
-	{
-		speed_ = saveSpeed_;
-	}
+		status_.X = status_.X + speed_ * (randSpeed_ * 0.1);
+
+		if (status_.X >= 1280)
+		{
+			speed_ = -saveSpeed_;
+		}
+		else if (status_.X <= 0)
+		{
+			speed_ = saveSpeed_;
+		}
 #pragma endregion
-	
-#pragma region /*上にくる*/
-	
-#pragma endregion
+		break;
+	}
 }

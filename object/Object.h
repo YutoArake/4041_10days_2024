@@ -9,6 +9,7 @@ struct ObjectStatus
 	float X;		//座標X
 	float Y;		//座標Y
 	float R;		//半径
+	int type;		//enemyの挙動
 	char Tag;		//タグ
 };
 
