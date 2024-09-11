@@ -7,6 +7,7 @@ void GamePlayScene::Initialize()
 	image_back = LoadGraph("Resources/textures/back.png");//背景画像
 	player->Initialize();
 	stage.Initialize(GameSelectScene::stageNum_);
+	playBgmHandle_ = LoadSoundMem("BGM/play_1.mp3"); //プレイBGM
 
 	scroll = 0;
 }
@@ -24,9 +25,18 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 		return;
 	}
 
+	//BGMが鳴っていなかったら
+	if (CheckSoundMem(playBgmHandle_) == 0)
+	{
+		//再生
+		PlaySoundMem(playBgmHandle_, DX_PLAYTYPE_BACK);
+	}
+
 	if (isClear) {
 		// ゲームクリアシーンへ
 		SceneManager::GetInstance()->ChangeScene("CLEAR");
+		//BGM停止
+		StopSoundMem(playBgmHandle_);
 		return;
 	}
 

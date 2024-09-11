@@ -14,6 +14,8 @@ private: // メンバ変数
 	bool isClear = false;
 
 	Enemy enemy_;
+	//BGMデータ
+	int playBgmHandle_;
 
 public: // �����o�֐�
 	

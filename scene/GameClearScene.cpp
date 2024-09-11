@@ -13,8 +13,8 @@ void GameClearScene::Initialize()
 	// 画像データ
 	bgGraph = LoadGraph("Resources/textures/clear.png");
 
-	// 音データ
-	//musicHandle = LoadSoundMem("Resources/sounds/.mp3");
+	// BGMデータ
+	clearBgmHandle_ = LoadSoundMem("BGM/gameClear.mp3");
 	//seHandle = LoadSoundMem("Resources/sounds/.mp3");
 }
 
@@ -24,6 +24,12 @@ void GameClearScene::Finalize()
 
 void GameClearScene::Update(char keys[256] , char oldkeys[256])
 {
+	//BGMが鳴っていなかったら
+	if (CheckSoundMem(clearBgmHandle_) == 0)
+	{
+		//再生
+		PlaySoundMem(clearBgmHandle_, DX_PLAYTYPE_BACK);
+	}
 	// メニュー切り替え
 	if (keys[KEY_INPUT_DOWN] && !oldkeys[KEY_INPUT_DOWN])
 	{
@@ -50,12 +56,20 @@ void GameClearScene::Update(char keys[256] , char oldkeys[256])
 	// シーン切り替え
 	if (keys[KEY_INPUT_RETURN] && !oldkeys[KEY_INPUT_RETURN])
 	{
+		//BGMが鳴っていなかったら
+		if (CheckSoundMem(clearBgmHandle_) == 0)
+		{
+			//再生
+			PlaySoundMem(clearBgmHandle_, DX_PLAYTYPE_BACK);
+		}
 		if (menu_ == NEXT_STAGE) {
-			// 効果音
-			PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
+			//// 効果音
+			//PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
 			// ゲームプレイシーンへ
 			GameSelectScene::stageNum_++;
 			SceneManager::GetInstance()->ChangeScene("PLAY");
+			//BGM停止
+			StopSoundMem(clearBgmHandle_);
 			return;
 		}
 		else if (menu_ == RETURN_TO_STAGESELECT) {
@@ -63,6 +77,8 @@ void GameClearScene::Update(char keys[256] , char oldkeys[256])
 			//PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
 			// セレクトシーンへ
 			SceneManager::GetInstance()->ChangeScene("SELECT");
+			//BGM停止
+			StopSoundMem(clearBgmHandle_);
 			return;
 		}
 		else if (menu_ == RETURN_TO_TITLE) {
@@ -70,6 +86,8 @@ void GameClearScene::Update(char keys[256] , char oldkeys[256])
 			//PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
 			// タイトルへ
 			SceneManager::GetInstance()->ChangeScene("TITLE");
+			//BGM停止
+			StopSoundMem(clearBgmHandle_);
 			return;
 		}
 	}

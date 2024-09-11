@@ -13,6 +13,8 @@ public: // 静的メンバ変数
 	static const int STAGE_MAX_NUM = 3;
 	// ステージ番号
 	static int stageNum_;
+	//BGMデータ
+	int selectBgmHandle_;
 
 private: // メンバ変数
 	// クリアマップ数
