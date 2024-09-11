@@ -16,7 +16,8 @@ class Stage
 	{
 		None,
 		Meteor,
-		Item
+		Item,
+		Enemy
 	};
 
 private: // ƒƒ“ƒo•Ï”

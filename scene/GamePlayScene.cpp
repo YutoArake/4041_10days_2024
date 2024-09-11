@@ -4,7 +4,6 @@
 
 void GamePlayScene::Initialize()
 {
-	enemy_.Initialize();
 	image_back = LoadGraph("Resources/textures/back.png");//背景画像
 	player->Initialize();
 	stage.Initialize(GameSelectScene::stageNum_);
@@ -33,7 +32,7 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 
 	// オブジェクトの更新
 	player->Update(keys, scroll);
-	enemy_.Move();
+	
 	stage.Update();
 	if (player->GetStatus().Y >= 2880 - player->GetStatus().R)
 	{
@@ -48,7 +47,6 @@ void GamePlayScene::Draw()
 {
 	DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back, true);//背景のため、一番上に！
 	stage.Draw(scroll);
-	enemy_.Draw();
 	player->Draw(scroll);
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "play");
 }
