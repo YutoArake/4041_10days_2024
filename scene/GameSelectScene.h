@@ -22,6 +22,7 @@ private: // メンバ変数
 
 	// 画像データ
 	int bgGraph;
+	int rocketGraph;
 
 	// 音データ
 	int musicHandle;

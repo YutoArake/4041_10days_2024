@@ -14,6 +14,7 @@ void GamePlayScene::Initialize()
 
 void GamePlayScene::Finalize()
 {
+	stage.Finalize();
 }
 
 void GamePlayScene::Update(char keys[256], char oldkeys[256])
@@ -47,6 +48,10 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 	if (player->GetStatus().Y >= 2880 - player->GetStatus().R)
 	{
 		isClear = true;
+	}
+	if(player->GetStatus().O2 <= 0)
+	{
+		SceneManager::GetInstance()->ChangeScene("GAMEOVER");
 	}
 
 	// 当たり判定

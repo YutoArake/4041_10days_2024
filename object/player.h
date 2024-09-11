@@ -8,7 +8,6 @@ struct PlayerStatus
 	float R;	//半径
 	float MoveSpeed;//移動速度
 	float FallSpeed;//落下速度
-	int HP;	//ライフ
 	int O2; //酸素
 };
 
@@ -24,17 +23,20 @@ public:
 	PlayerStatus GetStatus();
 
 private:
-	struct PlayerStatus player = {
+	struct PlayerStatus player_ = {
 		640,	//座標X
 		64,		//座標Y
 		64,		//半径
 		5,		//移動速度
 		1,		//落下速度
-		3,		//HP
 		1000,	//酸素
 	};
 
-	bool isInvincible;//無敵フラグ
-	int invincibleTimer;//無敵用のタイマー
-	int image_player;//player用の画像
+	bool isInvincible_;//無敵フラグ
+	int invincibleTimer_;//無敵用のタイマー
+	int imagePlayer_;//player用の画像
+	int imageGauge_;//playerのゲージ画像
+	float gauge_;
+	float fullGauge_;
+	float gaugeColor_;
 };

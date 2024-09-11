@@ -7,6 +7,9 @@ void Item::Initialize(ObjectStatus status)
 	status_.Y = status.Y;
 	status_.R = status.R;
 	status_.Tag = status.Tag;
+
+	//‰æ‘œ“Ç‚İ‚İ
+	imageItem_ = LoadGraph("Resources/textures/item.png");
 }
 
 void Item::Finalize()
@@ -21,8 +24,8 @@ void Item::Draw(float scroll)
 {
 	//DrawBox(0, 0, 10, 10, GetColor(255, 0, 0), true);
 
-	DrawBox(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
-		GetColor(255, 0, 0), true);
+	DrawExtendGraph(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
+		imageItem_, true);
 }
 
 //“–‚½‚è”»’è
