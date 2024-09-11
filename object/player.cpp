@@ -8,10 +8,10 @@ void Player::Initialize()
 
 void Player::Update(char keys[256], float& scroll)
 {
-	//_‘f‚Íí‚ÉŒ¸‚é
+	//é…¸ç´ ã¯å¸¸ã«æ¸›ã‚‹
 	player.O2--;
 
-	//–³“GŠÔ
+	//ç„¡æ•µæ™‚é–“
 	int invincibleTime = 60;
 	if (isInvincible == true) {
 		invincibleTimer++;
@@ -22,90 +22,93 @@ void Player::Update(char keys[256], float& scroll)
 		}
 	}
 
-	//ˆÚ“®
+	//ç§»å‹•
 	Move(keys, scroll);
 }
 
 void Player::Draw(float scroll)
 {
-	//’Êí
+	//é€šå¸¸æ™‚
 	if (isInvincible == false) {
+		/*DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
+			GetColor(0, 255, 0), true);*/
+
 		DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
 			image_player, true);
 	}
-	//–³“G
-	else {
-		//“_–Å‚³‚¹‚é
+	//ç„¡æ•µæ™‚
+	else 
+		//ç‚¹æ»…ã•ã›ã‚‹
 		if (invincibleTimer % 5 == 0) {
 			DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
 				image_player, true);
 		}
 	}
 
-	//ƒfƒoƒbƒN
+	//ãƒ‡ãƒãƒƒã‚¯
 	DrawFormatString(3, 0, GetColor(255, 255, 255), "posX: %f", player.X);
 	DrawFormatString(3, 15, GetColor(255, 255, 255), "posY: %f", player.Y);
 	DrawFormatString(3, 30, GetColor(255, 255, 255), "HP: %d", player.HP);
 	DrawFormatString(3, 45, GetColor(255, 255, 255), "O2: %d", player.O2);
-	DrawFormatString(3, 60, GetColor(255, 255, 255), "–³“G: %d", isInvincible);
+	DrawFormatString(3, 60, GetColor(255, 255, 255), "ç„¡æ•µ: %d", isInvincible);
 	DrawFormatString(3, 75, GetColor(255, 255, 255), "timer: %d", invincibleTimer);
 }
 
 
-//ˆÚ“®
+//ç§»å‹•
 void Player::Move(char keys[256], float& scroll)
 {
-#pragma region “¥‚ñ’£‚é
+#pragma region è¸ã‚“å¼µã‚‹
 	if (keys[KEY_INPUT_UP] == true) {
 		player.Y -= player.FallSpeed * 0.8;
 
-		//ƒXƒNƒ[ƒ‹‰ÁZ
+		//ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åŠ ç®—
 		if (player.Y >= 300 && player.Y <= 2220) {
 			scroll -= player.FallSpeed * 0.8;
 		}
 
-		//‰æ–Ê‚©‚ço‚È‚¢‚æ‚¤‚ÉˆÚ“®§Œä
+		//ç”»é¢ã‹ã‚‰å‡ºãªã„ã‚ˆã†ã«ç§»å‹•åˆ¶å¾¡
 		if (player.Y <= 0 + player.R) {
 			player.Y = 0 + player.R;
 		}
 	}
 #pragma endregion 
 
-#pragma region ‰º‚É‚ä‚Á‚­‚è
+#pragma region ä¸‹ã«ã‚†ã£ãã‚Š
 	if (keys[KEY_INPUT_DOWN] == true) {
 		player.Y += player.FallSpeed * 2;
 
-		//ƒXƒNƒ[ƒ‹‰ÁZ
+		//ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åŠ ç®—
 		if (player.Y >= 300 && player.Y <= 2220) {
 			scroll += player.FallSpeed * 2;
 		}
 
-		//‰æ–Ê‚©‚ço‚È‚¢‚æ‚¤‚ÉˆÚ“®§Œä
+		//ç”»é¢ã‹ã‚‰å‡ºãªã„ã‚ˆã†ã«ç§»å‹•åˆ¶å¾¡
 		if (player.Y >= 2880 - player.R) {
 			player.Y = 2880 - player.R;
 		}
 	}
 
-	//í‚É‚ä‚Á‚­‚è—‰º
+	//å¸¸ã«ã‚†ã£ãã‚Šè½ä¸‹
 	player.Y += player.FallSpeed;
 
-	//ƒXƒNƒ[ƒ‹‰ÁZ
+	//ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åŠ ç®—
 	if (player.Y >= 300 && player.Y <= 2220) {
 		scroll += player.FallSpeed;
 	}
 
-	//‰æ–Ê‚©‚ço‚È‚¢‚æ‚¤‚ÉˆÚ“®§Œä
+	//ç”»é¢ã‹ã‚‰å‡ºãªã„ã‚ˆã†ã«ç§»å‹•åˆ¶å¾¡
 	if (player.Y >= 2880 - player.R) {
 		player.Y = 2880 - player.R;
 	}
 
 #pragma endregion 
 
-#pragma region ¶‰EˆÚ“®
+#pragma region å·¦å³ç§»å‹•
 	if (keys[KEY_INPUT_LEFT] == true) {
 		player.X -= player.MoveSpeed;
 
-		//‰æ–Ê‚©‚ço‚È‚¢‚æ‚¤‚ÉˆÚ“®§Œä
+		//ç”»é¢ã‹ã‚‰å‡ºãªã„ã‚ˆã†ã«ç§»å‹•åˆ¶å¾¡
 		if (player.X <= 0 + player.R) {
 			player.X = 0 + player.R;
 		}
@@ -114,7 +117,7 @@ void Player::Move(char keys[256], float& scroll)
 	if (keys[KEY_INPUT_RIGHT] == true) {
 		player.X += player.MoveSpeed;
 
-		//‰æ–Ê‚©‚ço‚È‚¢‚æ‚¤‚ÉˆÚ“®§Œä
+		//ç”»é¢ã‹ã‚‰å‡ºãªã„ã‚ˆã†ã«ç§»å‹•åˆ¶å¾¡
 		if (player.X >= 1280 - player.R) {
 			player.X = 1280 - player.R;
 		}
@@ -122,17 +125,17 @@ void Player::Move(char keys[256], float& scroll)
 #pragma endregion 
 }
 
-//“–‚½‚è”»’è
+//å½“ãŸã‚Šåˆ¤å®š
 void Player::Collision(char tag)
 {
-	//“–‚½‚Á‚½‚Ì‚ª“G‚¾‚Á‚½
+	//å½“ãŸã£ãŸã®ãŒæ•µã ã£ãŸæ™‚
 	if (tag == (char)'e' && isInvincible == false) {
 		player.HP--;
-		//–³“GŠÔƒXƒ^[ƒg
+		//ç„¡æ•µæ™‚é–“ã‚¹ã‚¿ãƒ¼ãƒˆ
 		isInvincible = true;
 	}
 
-	//“–‚½‚Á‚½‚Ì‚ªƒAƒCƒeƒ€‚¾‚Á‚½
+	//å½“ãŸã£ãŸã®ãŒã‚¢ã‚¤ãƒ†ãƒ ã ã£ãŸæ™‚
 	if (tag == (char)'i')
 	{
 		player.O2 += 500;

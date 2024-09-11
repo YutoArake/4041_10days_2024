@@ -22,7 +22,7 @@ void Item::Draw(float scroll)
 	//DrawBox(0, 0, 10, 10, GetColor(255, 0, 0), true);
 
 	DrawBox(status_.X - status_.R, status_.Y - status_.R - scroll, status_.X + status_.R, status_.Y + status_.R - scroll,
-		GetColor(0, 0, 200), true);
+		GetColor(255, 0, 0), true);
 }
 
 //“–‚½‚è”»’è

@@ -3,7 +3,8 @@
 
 void Enemy::Initialize(ObjectStatus status)
 {
-	// ƒXƒe[ƒ^ƒX‘ã“ü
+	image_enemy = LoadGraph("Resources/textures/enemy_1.png");
+	// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ä»£å…¥
 	status_.X = status.X;
 	status_.Y = status.Y;
 	status_.R = status.R;
@@ -12,7 +13,7 @@ void Enemy::Initialize(ObjectStatus status)
 	speed_ = 5;
 	saveSpeed_ = speed_;
 	isMove_ = true;
-	randSpeed_ = 1;//—”—p
+	randSpeed_ = 1;//ä¹±æ•°ç”¨
 
 }
 
@@ -35,10 +36,10 @@ void Enemy::Draw(float scroll)
 	DrawFormatString(3, 90, GetColor(255, 255, 255), "isMove: %d", isMove_);
 }
 
-//“–‚½‚è”»’è
+//å½“ãŸã‚Šåˆ¤å®š
 void Enemy::Collision()
 {
-	////“–‚½‚Á‚½‚çÁ‚¦‚é
+	////å½“ãŸã£ãŸã‚‰æ¶ˆãˆã‚‹
 	//status_.X = -50;
 }
 
@@ -47,7 +48,7 @@ void Enemy::Move()
 #pragma region 
 #pragma endregion
 
-#pragma region ¶‰EˆÚ“®ˆê’è
+#pragma region å·¦å³ç§»å‹•ä¸€å®š
 	/*status_.X = status_.X + speed;
 
 	if (status_.X >= 1280)
@@ -60,7 +61,7 @@ void Enemy::Move()
 	}*/
 #pragma endregion
 
-#pragma region ¶‰EˆÚ“®ˆê’è‚Å~‚Ü‚é
+#pragma region å·¦å³ç§»å‹•ä¸€å®šã§æ­¢ã¾ã‚‹
 	/*int stopTime = 30;
 	if (isMove == true) {
 		status_.X = status_.X + speed;
@@ -98,7 +99,10 @@ void Enemy::Move()
 
 #pragma endregion
 
-#pragma region ¶‰E‘¬“x•Ï“®
+	DrawExtendGraph(enemy.X - enemy.R, enemy.Y - enemy.R , enemy.X + enemy.R, enemy.Y + enemy.R ,
+		image_enemy, true);
+
+#pragma region å·¦å³é€Ÿåº¦å¤‰å‹•
 	int randTime = 30;
 	
 	randTimer_++;
@@ -120,7 +124,7 @@ void Enemy::Move()
 	}
 #pragma endregion
 	
-#pragma region ã‚É‚­‚é
+#pragma region ä¸Šã«ãã‚‹
 	
 #pragma endregion
 }

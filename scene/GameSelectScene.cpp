@@ -10,7 +10,7 @@ int GameSelectScene::stageNum_ = 1;
 void GameSelectScene::Initialize()
 {
 	// 画像データ
-	bgGraph = LoadGraph("Resources/textures/bg.png");
+	bgGraph = LoadGraph("Resources/textures/select.png");
 
 	// 音データ
 	//musicHandle = LoadSoundMem("Resources/sounds/.mp3");

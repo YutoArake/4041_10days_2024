@@ -1,26 +1,27 @@
 #pragma once
 #include "DxLib.h"
+#include <math.h>
 
 #include "DxLib.h"
 #include "Object.h"
 
 /// <summary>
-/// ƒAƒCƒeƒ€
+/// ã‚¢ã‚¤ãƒ†ãƒ 
 /// </summary>
 class Enemy : public Object
 {
-public: // ƒƒ“ƒoŠÖ”
-	// ‰Šú‰»
+public: // ãƒ¡ãƒ³ãƒé–¢æ•°
+	// åˆæœŸåŒ–
 	void Initialize(ObjectStatus status) override;
-	// I—¹ˆ—
+	// çµ‚äº†å‡¦ç†
 	void Finalize() override;
-	// XV
+	// æ›´æ–°
 	void Update() override;
-	// •`‰æ
+	// æç”»
 	void Draw(float scroll) override;
-	// “–‚½‚è”»’è
+	// å½“ãŸã‚Šåˆ¤å®š
 	void Collision() override;
-	//“®‚«
+	//å‹•ã
 	void Move();
 
 
@@ -31,6 +32,8 @@ private:
 	bool isMove_;
 	int stopTimer_;
 
+	bool flag = true;
+	int image_enemy; //Enemyç”¨ã®ç”»åƒ
 	int randTimer_;
 	int randSpeed_;
 

@@ -34,6 +34,10 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 	player->Update(keys, scroll);
 	
 	stage.Update();
+	if (player->GetStatus().Y >= 2880 - player->GetStatus().R)
+	{
+		isClear = true;
+	}
 
 	// 当たり判定
 	stage.ObjectCollision(player);
