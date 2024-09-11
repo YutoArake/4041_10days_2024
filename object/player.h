@@ -8,7 +8,6 @@ struct PlayerStatus
 	float R;	//”¼Œa
 	float MoveSpeed;//ˆÚ“®‘¬“x
 	float FallSpeed;//—Ž‰º‘¬“x
-	int HP;	//ƒ‰ƒCƒt
 	int O2; //Ž_‘f
 };
 
@@ -30,7 +29,6 @@ private:
 		64,		//”¼Œa
 		5,		//ˆÚ“®‘¬“x
 		1,		//—Ž‰º‘¬“x
-		3,		//HP
 		1000,	//Ž_‘f
 	};
 

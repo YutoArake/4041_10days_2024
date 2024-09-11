@@ -154,7 +154,7 @@ void Player::Collision(char tag)
 {
 	//当たったのが敵だった時
 	if (tag == (char)'e' && isInvincible_ == false) {
-		player_.HP--;
+		player_.O2 -= 500;
 		//無敵時間スタート
 		isInvincible_ = true;
 	}
