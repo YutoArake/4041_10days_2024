@@ -74,11 +74,6 @@ void Player::Draw(float scroll)
 		imageGauge_, true);
 
 	//デバック
-	DrawFormatString(3, 15, GetColor(255, 255, 255), "O2: %d", player_.O2);
-	DrawFormatString(3, 30, GetColor(255, 255, 255), "full: %f", fullGauge_);
-	DrawFormatString(3, 45, GetColor(255, 255, 255), "長さ: %f", player_.X + player_.R - 4);
-	DrawFormatString(3, 60, GetColor(255, 255, 255), "gauge: %f", gauge_);
-
 }
 
 
@@ -166,7 +161,10 @@ void Player::Collision(char tag)
 	if (tag == (char)'i')
 	{
 		player_.O2 += 500;
-
+		if(fullGauge_ <= player_.O2)
+		{
+			player_.O2 = fullGauge_;
+		}
 	}
 }
 
