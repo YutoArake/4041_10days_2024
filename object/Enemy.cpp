@@ -12,7 +12,8 @@ void Enemy::Initialize(ObjectStatus status)
 	speed_ = 5;
 	saveSpeed_ = speed_;
 	isMove_ = true;
-	randSpeed_ = 1;
+	randSpeed_ = 1;//—”—p
+
 }
 
 void Enemy::Finalize()
@@ -37,9 +38,8 @@ void Enemy::Draw(float scroll)
 //“–‚½‚è”»’è
 void Enemy::Collision()
 {
-	//“–‚½‚Á‚½‚çÁ‚¦‚é
-	status_.X = -50;
-	speed_ = 0;
+	////“–‚½‚Á‚½‚çÁ‚¦‚é
+	//status_.X = -50;
 }
 
 void Enemy::Move()

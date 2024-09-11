@@ -28,23 +28,18 @@ void Player::Update(char keys[256], float& scroll)
 
 void Player::Draw(float scroll)
 {
-	//DrawBox(0, 0, 10, 10, GetColor(255, 0, 0), true);
-
 	//通常時
 	if (isInvincible == false) {
-		DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
-			GetColor(0, 255, 0), true);
-
 		DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
 			image_player, true);
 	}
 	//無敵時
 	else {
-		DrawBox(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
-			GetColor(0, 200, 0), true);
-
-		DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
-			image_player, true);
+		//点滅させる
+		if (invincibleTimer % 5 == 0) {
+			DrawExtendGraph(player.X - player.R, player.Y - player.R - scroll, player.X + player.R, player.Y + player.R - scroll,
+				image_player, true);
+		}
 	}
 
 	//デバック
@@ -131,14 +126,14 @@ void Player::Move(char keys[256], float& scroll)
 void Player::Collision(char tag)
 {
 	//当たったのが敵だった時
-	if (tag == (char)"enemy" && isInvincible == false) {
+	if (tag == (char)'e' && isInvincible == false) {
 		player.HP--;
 		//無敵時間スタート
 		isInvincible = true;
 	}
 
 	//当たったのがアイテムだった時
-	if (tag == (char)"item")
+	if (tag == (char)'i')
 	{
 		player.O2 += 500;
 

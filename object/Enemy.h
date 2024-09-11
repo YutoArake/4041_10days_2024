@@ -33,4 +33,5 @@ private:
 
 	int randTimer_;
 	int randSpeed_;
+
 };
