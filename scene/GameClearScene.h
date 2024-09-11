@@ -22,7 +22,7 @@ private: // メンバ変数
 	int bgGraph;
 
 	// 音データ
-	int musicHandle;
+	int clearBgmHandle_;
 	int seHandle;
 
 public: // メンバ関数

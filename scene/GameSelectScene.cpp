@@ -12,6 +12,8 @@ void GameSelectScene::Initialize()
 	// 画像データ
 	bgGraph = LoadGraph("Resources/textures/select.png");
 	rocketGraph = LoadGraph("Resources/textures/player.png");
+	//セレクトBGM
+	selectBgmHandle_ = LoadSoundMem("BGM/select.mp3"); 
 
 	// 音データ
 	//musicHandle = LoadSoundMem("Resources/sounds/.mp3");
@@ -24,6 +26,15 @@ void GameSelectScene::Finalize()
 
 void GameSelectScene::Update(char keys[256] , char oldkeys[256])
 {
+	//BGMが鳴っていなかったら
+	if (CheckSoundMem(selectBgmHandle_) == 0)
+	{
+		//再生
+		PlaySoundMem(selectBgmHandle_, DX_PLAYTYPE_BACK);
+		//音量小さめ
+		ChangeVolumeSoundMem(100, selectBgmHandle_);
+	}
+
 	// マップ切り替え
 	if (keys[KEY_INPUT_DOWN] && !oldkeys[KEY_INPUT_DOWN])
 	{
@@ -43,6 +54,8 @@ void GameSelectScene::Update(char keys[256] , char oldkeys[256])
 	// シーン切り替え
 	if (keys[KEY_INPUT_RETURN] && !oldkeys[KEY_INPUT_RETURN])
 	{
+		//BGM停止
+		StopSoundMem(selectBgmHandle_);
 		// 効果音
 		//PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
 		// ゲームプレイシーンへ
