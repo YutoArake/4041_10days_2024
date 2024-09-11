@@ -36,14 +36,14 @@ void GameSelectScene::Update(char keys[256] , char oldkeys[256])
 	}
 
 	// マップ切り替え
-	if (keys[KEY_INPUT_DOWN] && !oldkeys[KEY_INPUT_DOWN])
+	if (keys[KEY_INPUT_RIGHT] && !oldkeys[KEY_INPUT_RIGHT])
 	{
 		// インクリメント
 		stageNum_++;
 		// 値がマップ数を超えないようにする
 		stageNum_ = std::min<int>(stageNum_, STAGE_MAX_NUM);
 	}
-	if (keys[KEY_INPUT_UP] && !oldkeys[KEY_INPUT_UP])
+	if (keys[KEY_INPUT_LEFT] && !oldkeys[KEY_INPUT_LEFT])
 	{
 		// デクリメント
 		stageNum_--;

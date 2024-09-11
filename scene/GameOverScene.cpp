@@ -27,14 +27,14 @@ void GameOverScene::Update(char keys[256], char oldkeys[256])
 	}
 
 	// メニュー切り替え
-	if (keys[KEY_INPUT_DOWN] && !oldkeys[KEY_INPUT_DOWN])
+	if (keys[KEY_INPUT_RIGHT] && !oldkeys[KEY_INPUT_RIGHT])
 	{
 		// インクリメント
 		menu_++;
 		// 値がメニュー数を超えないようにする
 		menu_ = std::min<int>(menu_, MENU_MAX_NUM);
 	}
-	if (keys[KEY_INPUT_UP] && !oldkeys[KEY_INPUT_UP])
+	if (keys[KEY_INPUT_LEFT] && !oldkeys[KEY_INPUT_LEFT])
 	{
 		// デクリメント
 		menu_--;
