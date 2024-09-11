@@ -141,6 +141,7 @@ void Player::Collision(char tag)
 	if (tag == (char)"item")
 	{
 		player.O2 += 500;
+
 	}
 }
 

@@ -39,6 +39,7 @@ void Enemy::Collision()
 {
 	//“–‚½‚Á‚½‚çÁ‚¦‚é
 	status_.X = -50;
+	speed_ = 0;
 }
 
 void Enemy::Move()

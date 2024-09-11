@@ -124,8 +124,8 @@ void Stage::PopGimmick(ObjectNum objectNum, const ObjectStatus& status)
 	switch (objectNum)
 	{
 	case ObjectNum::Meteor:	object = std::make_unique<Meteor>();	break;
-	case ObjectNum::Item:		object = std::make_unique<Item>();		break;
-	case ObjectNum::Enemy:		object = std::make_unique<Enemy>();		break;
+	case ObjectNum::Item:   object = std::make_unique<Item>();		break;
+	case ObjectNum::Enemy:	object = std::make_unique<Enemy>();		break;
 	}
 
 	//‰Šúİ’è

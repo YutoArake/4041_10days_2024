@@ -23,6 +23,7 @@ public: // ƒƒ“ƒoŠÖ”
 	//“®‚«
 	void Move();
 
+
 private:
 	int speed_;
 
@@ -32,5 +33,4 @@ private:
 
 	int randTimer_;
 	int randSpeed_;
-
 };
