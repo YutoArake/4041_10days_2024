@@ -38,6 +38,10 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 	{
 		isClear = true;
 	}
+	if(player->GetStatus().O2 <= 0)
+	{
+		SceneManager::GetInstance()->ChangeScene("GAMEOVER");
+	}
 
 	// 当たり判定
 	stage.ObjectCollision(player);
