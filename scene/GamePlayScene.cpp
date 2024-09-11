@@ -4,10 +4,14 @@
 
 void GamePlayScene::Initialize()
 {
+	// 画像データ
 	image_back = LoadGraph("Resources/textures/back.png");//背景画像
+	// 音声データ
+	playBgmHandle_ = LoadSoundMem("BGM/play_1.mp3"); //プレイBGM
+
+	// 初期化
 	player->Initialize();
 	stage.Initialize(GameSelectScene::stageNum_);
-	playBgmHandle_ = LoadSoundMem("BGM/play_1.mp3"); //プレイBGM
 
 	scroll = 0;
 }
@@ -26,13 +30,6 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 		return;
 	}
 
-	//BGMが鳴っていなかったら
-	if (CheckSoundMem(playBgmHandle_) == 0)
-	{
-		//再生
-		PlaySoundMem(playBgmHandle_, DX_PLAYTYPE_BACK);
-	}
-
 	if (isClear) {
 		// ゲームクリアシーンへ
 		SceneManager::GetInstance()->ChangeScene("CLEAR");
@@ -41,17 +38,30 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 		return;
 	}
 
+	if (player->GetStatus().O2 <= 0)
+	{
+		// ゲームオーバーシーンへ
+		SceneManager::GetInstance()->ChangeScene("GAMEOVER");
+		//BGM停止
+		StopSoundMem(playBgmHandle_);
+		return;
+	}
+
+	//BGMが鳴っていなかったら
+	if (CheckSoundMem(playBgmHandle_) == 0)
+	{
+		//再生
+		PlaySoundMem(playBgmHandle_, DX_PLAYTYPE_BACK);
+	}
+
 	// オブジェクトの更新
 	player->Update(keys, scroll);
 	
 	stage.Update();
+
 	if (player->GetStatus().Y >= 2880 - player->GetStatus().R)
 	{
 		isClear = true;
-	}
-	if(player->GetStatus().O2 <= 0)
-	{
-		SceneManager::GetInstance()->ChangeScene("GAMEOVER");
 	}
 
 	// 当たり判定
@@ -63,5 +73,4 @@ void GamePlayScene::Draw()
 	DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back, true);//背景のため、一番上に！
 	stage.Draw(scroll);
 	player->Draw(scroll);
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "play");
 }
