@@ -25,6 +25,12 @@ void Stage::Draw(float scroll)
 	for (auto& object : objects_) { object->Draw(scroll); }
 }
 
+void Stage::Finalize()
+{
+	// ギミックコンテナの中身を空にする
+	objects_.clear();
+}
+
 void Stage::LoadStage()
 {
 	// バッファをクリア
@@ -139,10 +145,11 @@ void Stage::PopGimmick(ObjectNum objectNum, const ObjectStatus& status)
 
 void Stage::ObjectCollision(Player* p)
 {
+	// プレイヤーの座標取得
+	int x1 = p->GetStatus().X, y1 = p->GetStatus().Y, r1 = p->GetStatus().R;
 	// 全オブジェクトの当たり判定
 	for (auto& object : objects_) {
-		// プレイヤーとオブジェクトの座標取得
-		int x1 = p->GetStatus().X, y1 = p->GetStatus().Y, r1 = p->GetStatus().R;
+		// オブジェクトの座標取得
 		int x2 = object->GetStatus().X, y2 = object->GetStatus().Y, r2 = object->GetStatus().R;
 
 		if (x1 - r1 < x2 + r2 && x2 - r2 < x1 + r1) {

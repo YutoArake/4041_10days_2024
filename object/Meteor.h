@@ -8,13 +8,26 @@
 /// </summary>
 class Meteor : public Object
 {
+	// 列挙
+	enum class Posision {
+		LeftTop,
+		RightTop,
+		Under,
+		LeftUnder,
+		RightUnder
+	};
+
 private: // メンバ変数
 	// 画像データ
 	int meteorGraph;
-	int flameGraph;
+	// 音声データ
+	int seHandle;
 
+	// 沸き場所で挙動を変えるための変数
+	Posision pos;
+
+	// エフェクト用タイマー
 	int timer;
-
 	// エフェクトコンテナ
 	std::vector<std::unique_ptr<FireEffect>> effects;
 

@@ -38,6 +38,9 @@ public: // ƒƒ“ƒoŠÖ”
 	// •`‰æ
 	void Draw(float scroll);
 
+	// I—¹ˆ—
+	void Finalize();
+
 	// “–‚½‚è”»’è
 	void ObjectCollision(Player* p);
 

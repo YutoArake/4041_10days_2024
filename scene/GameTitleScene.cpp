@@ -25,5 +25,4 @@ void GameTitleScene::Update(char keys[256] , char oldkeys[256])
 void GameTitleScene::Draw()
 {
 	DrawGraph(0, 0, titleGraph_, false);
-	DrawFormatString(0, 0, GetColor(255, 0, 0), "title");
 }
