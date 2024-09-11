@@ -59,13 +59,16 @@ void Player::Draw(float scroll)
 
 
 	//ゲージ
-	DrawBox(
-		player_.X - player_.R + 4,
-		player_.Y - player_.R + 116 - scroll,
-		gauge_,
-		player_.Y + player_.R - scroll,
-		GetColor(255 - gaugeColor_, gaugeColor_, 0), true);
-
+	if(player_.O2 != 0)
+	{
+		DrawBox(
+			player_.X - player_.R + 4,
+			player_.Y - player_.R + 116 - scroll,
+			gauge_,
+			player_.Y + player_.R - scroll,
+			GetColor(255 - gaugeColor_, gaugeColor_, 0), true);
+	}
+	
 	//ゲージの枠
 	DrawExtendGraph(player_.X - player_.R, player_.Y - player_.R - scroll, player_.X + player_.R, player_.Y + player_.R - scroll,
 		imageGauge_, true);
