@@ -20,4 +20,5 @@ public: // ƒƒ“ƒoŠÖ”
 	void Collision() override;
 
 private:
+	int imageItem_;
 };

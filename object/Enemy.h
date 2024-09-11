@@ -29,10 +29,14 @@ private:
 
 	int saveSpeed_;
 	bool isMove_;
+	int stopTime_;
 	int stopTimer_;
 
-	bool flag = true;
-	int image_enemy; //Enemy用の画像
+	int imageEnemy1_; //Enemy用の画像
+	int imageEnemy2_; 
+	int imageEnemy3_; 
+
+	int randTime_;
 	int randTimer_;
 	int randSpeed_;
 
