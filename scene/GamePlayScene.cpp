@@ -13,6 +13,7 @@ void GamePlayScene::Initialize()
 
 void GamePlayScene::Finalize()
 {
+	stage.Finalize();
 }
 
 void GamePlayScene::Update(char keys[256], char oldkeys[256])

@@ -25,6 +25,12 @@ void Stage::Draw(float scroll)
 	for (auto& object : objects_) { object->Draw(scroll); }
 }
 
+void Stage::Finalize()
+{
+	// ギミックコンテナの中身を空にする
+	objects_.clear();
+}
+
 void Stage::LoadStage()
 {
 	// バッファをクリア

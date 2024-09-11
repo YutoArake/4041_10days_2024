@@ -11,6 +11,7 @@ void GameSelectScene::Initialize()
 {
 	// 画像データ
 	bgGraph = LoadGraph("Resources/textures/select.png");
+	rocketGraph = LoadGraph("Resources/textures/player.png");
 
 	// 音データ
 	//musicHandle = LoadSoundMem("Resources/sounds/.mp3");
@@ -59,6 +60,15 @@ void GameSelectScene::Update(char keys[256] , char oldkeys[256])
 
 void GameSelectScene::Draw()
 {
+	// 背景
 	DrawGraph(0, 0, bgGraph, false);
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "select");
+
+	// ステージ選択
+	int radius = 64;
+	if (stageNum_ == 1) DrawExtendGraph(150, 500, 150 + radius * 2, 500 + radius * 2, rocketGraph, false);
+	else if(stageNum_ == 2) DrawExtendGraph(575, 500, 575 + radius * 2, 500 + radius * 2, rocketGraph, false);
+	else if(stageNum_ == 3) DrawExtendGraph(1000, 500, 1000 + radius * 2, 500 + radius * 2, rocketGraph, false);
+
+	// デバックテキスト
+	DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", stageNum_);
 }
