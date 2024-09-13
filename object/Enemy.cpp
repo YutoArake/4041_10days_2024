@@ -3,9 +3,12 @@
 
 void Enemy::Initialize(ObjectStatus status)
 {
+	// 画像データ
 	imageEnemy1_ = LoadGraph("Resources/textures/enemy_1.png");
 	imageEnemy2_ = LoadGraph("Resources/textures/enemy_2.png");
 	imageEnemy3_ = LoadGraph("Resources/textures/enemy_3.png");
+	// 音声データ
+	seHandle = LoadSoundMem("Resources/sounds/se_meteor.mp3");
 	// ステータス代入
 	status_.X = status.X;
 	status_.Y = status.Y;
@@ -58,6 +61,8 @@ void Enemy::Draw(float scroll)
 //当たり判定
 void Enemy::Collision()
 {
+	// 効果音
+	PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
 	////当たったら消える
 	//status_.X = -50;
 }

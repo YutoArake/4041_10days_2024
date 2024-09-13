@@ -6,7 +6,9 @@ void GameTitleScene::Initialize()
 	// 画像データ
 	titleGraph_ = LoadGraph("Resources/textures/title.png");
 	pressEnterGraph_ = LoadGraph("Resources/textures/pressEnter.png");
-	titleBgmHandle_ = LoadSoundMem("BGM/title.mp3"); //タイトルBGM
+	// 音声データ
+	titleBgmHandle_ = LoadSoundMem("BGM/title.mp3");
+	seHandle = LoadSoundMem("Resources/sounds/se_select.wav");
 
 	alpha_ = 255;
 	add_ = -5;
@@ -38,6 +40,8 @@ void GameTitleScene::Update(char keys[256] , char oldkeys[256])
 	// シーン切り替え
 	if (keys[KEY_INPUT_RETURN] && !oldkeys[KEY_INPUT_RETURN])
 	{
+		// 効果音
+		PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
 		// 説明画面へ
 		SceneManager::GetInstance()->ChangeScene("DEMO");
 		//BGM停止

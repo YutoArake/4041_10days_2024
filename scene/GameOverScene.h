@@ -30,6 +30,7 @@ private: // メンバ変数
 
 	// 音データ
 	int overBgmHandle_;
+	int seHandle;
 
 public: // メンバ関数
 	/// <summary>

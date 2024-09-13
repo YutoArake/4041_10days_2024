@@ -10,6 +10,8 @@ void Item::Initialize(ObjectStatus status)
 
 	//‰æ‘œ“Ç‚İ‚İ
 	imageItem_ = LoadGraph("Resources/textures/item.png");
+	// ‰¹ºƒf[ƒ^
+	seHandle = LoadSoundMem("Resources/sounds/se_o2.wav");
 }
 
 void Item::Finalize()
@@ -33,4 +35,6 @@ void Item::Collision()
 {
 	//“–‚½‚Á‚½‚çÁ‚¦‚é
 	status_.X = -50;
+	// Œø‰Ê‰¹
+	PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
 }

@@ -29,6 +29,8 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 	{
 		// ステージセレクトへ
 		SceneManager::GetInstance()->ChangeScene("SELECT");
+		//BGM停止
+		StopSoundMem(playBgmHandle_);
 		return;
 	}
 

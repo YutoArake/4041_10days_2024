@@ -14,7 +14,7 @@ void GameOverScene::Initialize()
 	toTitleGraph = LoadGraph("Resources/textures/titleScene.png");
 	// 音声データ
 	overBgmHandle_ = LoadSoundMem("BGM/gameOver.mp3");
-	//seHandle = LoadSoundMem("Resources/sounds/.mp3");
+	seHandle = LoadSoundMem("Resources/sounds/se_select.wav");
 
 	alpha_ = 255;
 	add_ = -5;
@@ -64,7 +64,7 @@ void GameOverScene::Update(char keys[256], char oldkeys[256])
 	{
 		if (menu_ == RETRY_STAGE) {
 			// 効果音
-			//PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
+			PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
 			// ゲームプレイシーンへ
 			SceneManager::GetInstance()->ChangeScene("PLAY");
 			//BGM停止
@@ -73,7 +73,7 @@ void GameOverScene::Update(char keys[256], char oldkeys[256])
 		}
 		else if (menu_ == RETURN_TO_STAGESELECT) {
 			// 効果音
-			//PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
+			PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
 			// セレクトシーンへ
 			SceneManager::GetInstance()->ChangeScene("SELECT");
 			//BGM停止
@@ -82,7 +82,7 @@ void GameOverScene::Update(char keys[256], char oldkeys[256])
 		}
 		else if (menu_ == RETURN_TO_TITLE) {
 			// 効果音
-			//PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
+			PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
 			// タイトルへ
 			SceneManager::GetInstance()->ChangeScene("TITLE");
 			//BGM停止

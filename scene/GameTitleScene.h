@@ -12,6 +12,7 @@ private: // メンバ変数
 	int pressEnterGraph_;
 	//BGMデータ
 	int titleBgmHandle_;
+	int seHandle;
 
 	//アルファ値
 	int alpha_;

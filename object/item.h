@@ -20,5 +20,8 @@ public: // メンバ関数
 	void Collision() override;
 
 private:
+	// 画像データ
 	int imageItem_;
+	// 音声データ
+	int seHandle;
 };

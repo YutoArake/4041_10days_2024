@@ -12,12 +12,10 @@ void GameSelectScene::Initialize()
 	// 画像データ
 	bgGraph = LoadGraph("Resources/textures/select.png");
 	rocketGraph = LoadGraph("Resources/textures/player.png");
-	//セレクトBGM
-	selectBgmHandle_ = LoadSoundMem("BGM/select.mp3"); 
 
 	// 音データ
-	//musicHandle = LoadSoundMem("Resources/sounds/.mp3");
-	//seHandle = LoadSoundMem("Resources/sounds/.mp3");
+	selectBgmHandle_ = LoadSoundMem("BGM/select.mp3"); 
+	seHandle = LoadSoundMem("Resources/sounds/se_select.wav");
 }
 
 void GameSelectScene::Finalize()
@@ -57,7 +55,7 @@ void GameSelectScene::Update(char keys[256] , char oldkeys[256])
 		//BGM停止
 		StopSoundMem(selectBgmHandle_);
 		// 効果音
-		//PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
+		PlaySoundMem(seHandle, DX_PLAYTYPE_BACK);
 		// ゲームプレイシーンへ
 		SceneManager::GetInstance()->ChangeScene("PLAY");
 		return;
@@ -65,6 +63,8 @@ void GameSelectScene::Update(char keys[256] , char oldkeys[256])
 
 	if (keys[KEY_INPUT_ESCAPE] && !oldkeys[KEY_INPUT_ESCAPE])
 	{
+		//BGM停止
+		StopSoundMem(selectBgmHandle_);
 		// タイトルへ
 		SceneManager::GetInstance()->ChangeScene("TITLE");
 		return;

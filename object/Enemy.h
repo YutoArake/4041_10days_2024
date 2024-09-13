@@ -36,6 +36,9 @@ private:
 	int imageEnemy2_; 
 	int imageEnemy3_; 
 
+	// 音声データ
+	int seHandle;
+
 	int randTime_;
 	int randTimer_;
 	int randSpeed_;
