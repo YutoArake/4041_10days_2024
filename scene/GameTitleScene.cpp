@@ -3,10 +3,10 @@
 
 void GameTitleScene::Initialize()
 {
-	// ‰æ‘œƒf[ƒ^
+	// ç”»åƒãƒ‡ãƒ¼ã‚¿
 	titleGraph_ = LoadGraph("Resources/textures/title.png");
 	pressEnterGraph_ = LoadGraph("Resources/textures/pressEnter.png");
-	titleBgmHandle_ = LoadSoundMem("BGM/title.mp3"); //ƒ^ƒCƒgƒ‹BGM
+	titleBgmHandle_ = LoadSoundMem("BGM/title.mp3"); //ã‚¿ã‚¤ãƒˆãƒ«BGM
 
 	alpha_ = 255;
 	add_ = -5;
@@ -18,29 +18,29 @@ void GameTitleScene::Finalize()
 
 void GameTitleScene::Update(char keys[256] , char oldkeys[256])
 {
-	//BGM‚ª–Â‚Á‚Ä‚¢‚È‚©‚Á‚½‚ç
+	//BGMãŒé³´ã£ã¦ã„ãªã‹ã£ãŸã‚‰
 	if (CheckSoundMem(titleBgmHandle_) == 0)
 	{
-		//Ä¶
+		//å†ç”Ÿ
 		PlaySoundMem(titleBgmHandle_, DX_PLAYTYPE_BACK);
 	}
 	
-	//"press Enter"‚ğ“_–Å
+	//"press Enter"ã‚’ç‚¹æ»…
 	alpha_ += add_;
 
-	// ƒAƒ‹ƒtƒ@’l‚ª 0 ‚© 255 ‚É‚È‚Á‚½‚ç•Ï‰»‚Ì•ûŒü‚ğ”½“]‚·‚é
+	// ã‚¢ãƒ«ãƒ•ã‚¡å€¤ãŒ 0 ã‹ 255 ã«ãªã£ãŸã‚‰å¤‰åŒ–ã®æ–¹å‘ã‚’åè»¢ã™ã‚‹
 	if (alpha_ == 0 || alpha_ == 255)
 	{
 		add_ = -add_;
 	}
 
 
-	// ƒV[ƒ“Ø‚è‘Ö‚¦
+	// ã‚·ãƒ¼ãƒ³åˆ‡ã‚Šæ›¿ãˆ
 	if (keys[KEY_INPUT_RETURN] && !oldkeys[KEY_INPUT_RETURN])
 	{
-		// ƒXƒe[ƒWƒZƒŒƒNƒg‚Ö
-		SceneManager::GetInstance()->ChangeScene("SELECT");
-		//BGM’â~
+		// èª¬æ˜ç”»é¢ã¸
+		SceneManager::GetInstance()->ChangeScene("DEMO");
+		//BGMåœæ­¢
 		StopSoundMem(titleBgmHandle_);
 		return;
 	}

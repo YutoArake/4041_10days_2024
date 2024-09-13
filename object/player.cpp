@@ -57,7 +57,6 @@ void Player::Draw(float scroll)
 		}
 	}
 
-
 	//ゲージ
 	if(player_.O2 != 0)
 	{

@@ -6,12 +6,18 @@ void GameClearScene::Initialize()
 {
 	// メニュー
 	menu_ = NEXT_STAGE;
+	isFainalStage = false;
 	if (GameSelectScene::stageNum_ == GameSelectScene::STAGE_MAX_NUM) {
 		menu_ = RETURN_TO_STAGESELECT;
+		isFainalStage = true;
 	}
 
 	// 画像データ
 	bgGraph = LoadGraph("Resources/textures/clear.png");
+	pGraph = LoadGraph("Resources/textures/yajirushi.png");
+	nextStageGraph = LoadGraph("Resources/textures/nextStage.png");
+	toSelectGraph = LoadGraph("Resources/textures/selectScene.png");
+	toTitleGraph = LoadGraph("Resources/textures/titleScene.png");
 
 	// BGMデータ
 	clearBgmHandle_ = LoadSoundMem("BGM/gameClear.mp3");
@@ -96,4 +102,13 @@ void GameClearScene::Update(char keys[256] , char oldkeys[256])
 void GameClearScene::Draw()
 {
 	DrawGraph(0, 0, bgGraph, true);
+	if(!isFainalStage) DrawGraph(0, 300, nextStageGraph, true);
+	DrawGraph(0, 400, toSelectGraph, true);
+	DrawGraph(0, 500, toTitleGraph, true);
+	switch (menu_)
+	{
+	case NEXT_STAGE:							DrawGraph(350, 325, pGraph, true); break;
+	case RETURN_TO_STAGESELECT:	DrawGraph(350, 425, pGraph, true); break;
+	case RETURN_TO_TITLE:				DrawGraph(350, 525, pGraph, true); break;
+	}
 }
