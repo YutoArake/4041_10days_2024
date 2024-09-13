@@ -1,1 +1,24 @@
-meteor pos(600 1000) rad(32) tag(item)
+enemy pos(0 900) rad(30) type(1) tag(enemy)
+enemy pos(1279 1250) rad(30) type(3) tag(enemy)
+
+enemy pos(0 1600) rad(30) type(1) tag(enemy)
+enemy pos(1279 1950) rad(30) type(3) tag(enemy)
+
+enemy pos(0 2300) rad(30) type(1) tag(enemy)
+enemy pos(1279 2650) rad(30) type(3) tag(enemy)
+
+meteor pos(-30 50) rad(32) type(2) tag(enemy)
+meteor pos(-60 80) rad(32) type(2) tag(enemy)
+meteor pos(-90 120) rad(32) type(2) tag(enemy)
+meteor pos(-120 150) rad(32) type(2) tag(enemy)
+meteor pos(-150 180) rad(32) type(2) tag(enemy)
+meteor pos(-180 210) rad(32) type(2) tag(enemy)
+
+meteor pos(1300  1710) rad(32) type(3) tag(enemy)
+meteor pos(1330  1680) rad(32) type(3) tag(enemy)
+meteor pos(1360  1650) rad(32) type(3) tag(enemy)
+meteor pos(1390  1620) rad(32) type(3) tag(enemy)
+meteor pos(1420  1580) rad(32) type(3) tag(enemy)
+meteor pos(1450  1550) rad(32) type(3) tag(enemy)
+
+
