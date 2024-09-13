@@ -12,7 +12,6 @@ void Meteor::Initialize(ObjectStatus status)
 
 	// •¦‚«êŠ
 	// ã
-
 	if (status.type == 1)
 	{
 		pos = Posision::Under;
