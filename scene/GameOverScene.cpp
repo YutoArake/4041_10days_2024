@@ -124,6 +124,6 @@ void GameOverScene::Draw()
 		break;
 	}
 	// デバックテキスト
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "ゲームオーバーシーン");
-	DrawFormatString(0, 20, GetColor(255, 255, 255), "%d", menu_);
+	/*DrawFormatString(0, 0, GetColor(255, 255, 255), "ゲームオーバーシーン");
+	DrawFormatString(0, 20, GetColor(255, 255, 255), "%d", menu_);*/
 }

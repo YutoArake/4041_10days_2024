@@ -1,11 +1,22 @@
+enemy pos(0 700) rad(30) type(3) tag(enemy)
+enemy pos(0 750) rad(30) type(2) tag(enemy)
 enemy pos(0 900) rad(30) type(1) tag(enemy)
-enemy pos(1279 1250) rad(30) type(3) tag(enemy)
 
-enemy pos(0 1600) rad(30) type(1) tag(enemy)
+enemy pos(0 1000) rad(30) type(3) tag(enemy)
+enemy pos(0 1110) rad(30) type(3) tag(enemy)
+enemy pos(1279 1250) rad(30) type(1) tag(enemy)
+
+enemy pos(1279 1450) rad(30) type(3) tag(enemy)
+enemy pos(1279 1500) rad(30) type(1) tag(enemy)
+enemy pos(1279 1550) rad(30) type(3) tag(enemy)
+
+enemy pos(0 1600) rad(30) type(3) tag(enemy)
 enemy pos(1279 1950) rad(30) type(3) tag(enemy)
 
-enemy pos(0 2300) rad(30) type(1) tag(enemy)
+enemy pos(0 2300) rad(30) type(3) tag(enemy)
 enemy pos(1279 2650) rad(30) type(3) tag(enemy)
+
+item pos(620 1800) rad(40) tag(item)
 
 meteor pos(-30    -100) rad(32) type(2) tag(enemy)
 meteor pos(1500   -220) rad(32) type(2) tag(enemy)

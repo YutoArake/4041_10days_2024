@@ -82,6 +82,6 @@ void GameSelectScene::Draw()
 	else if(stageNum_ == 2) DrawExtendGraph(575, 500, 575 + radius * 2, 500 + radius * 2, rocketGraph, false);
 	else if(stageNum_ == 3) DrawExtendGraph(1000, 500, 1000 + radius * 2, 500 + radius * 2, rocketGraph, false);
 
-	// デバックテキスト
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", stageNum_);
+	//// デバックテキスト
+	//DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", stageNum_);
 }

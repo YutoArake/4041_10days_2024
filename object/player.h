@@ -26,7 +26,7 @@ private:
 	struct PlayerStatus player_ = {
 		640,	//À•WX
 		64,		//À•WY
-		64,		//”¼Œa
+		50,		//”¼Œa
 		5,		//ˆÚ“®‘¬“x
 		1,		//—‰º‘¬“x
 		2800,	//_‘f

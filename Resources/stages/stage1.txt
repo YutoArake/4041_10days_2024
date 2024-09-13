@@ -1,5 +1,5 @@
 enemy pos(1 900) rad(30) type(2) tag(enemy)
-item pos(640 1000) rad(30) tag(item)
+item pos(640 1000) rad(40) tag(item)
 enemy pos(1279 1100) rad(30) type(2) tag(enemy)
 
 meteor pos(352  1500) rad(32) type(1) tag(enemy)
@@ -8,7 +8,7 @@ meteor pos(864  1500) rad(32) type(1) tag(enemy)
 meteor pos(928  1500) rad(32) type(1) tag(enemy)
 
 enemy pos(1 1600) rad(30) type(2) tag(enemy)
-item pos(640 1700) rad(30) tag(item)
+item pos(640 1700) rad(40) tag(item)
 enemy pos(1279 1800) rad(30) type(2) tag(enemy)
 
 meteor pos(96   2400) rad(32) type(1) tag(enemy)
@@ -19,5 +19,5 @@ meteor pos(1120 2400) rad(32) type(1) tag(enemy)
 meteor pos(1184 2400) rad(32) type(1) tag(enemy)
 
 enemy pos(1 2300) rad(30) type(2) tag(enemy)
-item pos(640 2400) rad(30) tag(item)
+item pos(640 2400) rad(40) tag(item)
 enemy pos(1279 2500) rad(30) type(2) tag(enemy)
