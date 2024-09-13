@@ -10,6 +10,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	// ウィンドウモードに設定
 	ChangeWindowMode(TRUE);
 
+	// 文字化け対処（UTF-8対応）
+	SetUseCharCodeFormat(DX_CHARCODEFORMAT_UTF8);
 	// ウィンドウのタイトルに表示する文字列
 	const char TITLE[] = "4041_月面着陸";
 
@@ -57,7 +59,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	sceneManager_->SetSceneFactory(sceneFactory_);
 
 	// シーンマネージャーに最初のシーンをセット
-	SceneManager::GetInstance()->ChangeScene("CLEAR");
+	SceneManager::GetInstance()->ChangeScene("TITLE");
 
 	// 最新のキーボード情報用
 	char keys[256] = { 0 };
