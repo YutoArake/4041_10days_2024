@@ -5,8 +5,8 @@ void GameDemoScene::Initialize()
 {
 	page = 1;
 	// 画像データ
-	infoGraph1_ = LoadGraph("Resources/textures/setumei.png");
-	infoGraph2_ = LoadGraph("Resources/textures/setumei.png");
+	infoGraph1_ = LoadGraph("Resources/textures/setumei1.png");
+	infoGraph2_ = LoadGraph("Resources/textures/setumei2.png");
 	//タイトルBGM
 	titleBgmHandle_ = LoadSoundMem("BGM/title.mp3");
 }

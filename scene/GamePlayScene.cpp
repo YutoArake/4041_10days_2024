@@ -5,7 +5,9 @@
 void GamePlayScene::Initialize()
 {
 	// 画像データ
-	image_back = LoadGraph("Resources/textures/back.png");//背景画像
+	image_back1 = LoadGraph("Resources/textures/back.png");//背景画像
+	image_back2 = LoadGraph("Resources/textures/back2.png");//背景画像
+	image_back3 = LoadGraph("Resources/textures/back3.png");//背景画像
 	// 音声データ
 	playBgmHandle_ = LoadSoundMem("BGM/play_1.mp3"); //プレイBGM
 
@@ -70,7 +72,11 @@ void GamePlayScene::Update(char keys[256], char oldkeys[256])
 
 void GamePlayScene::Draw()
 {
-	DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back, true);//背景のため、一番上に！
+	//背景のため、一番上に！
+	if (GameSelectScene::stageNum_ == 1) DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back1, true);
+	if (GameSelectScene::stageNum_ == 2) DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back2, true);
+	if (GameSelectScene::stageNum_ == 3) DrawExtendGraph(0, 0 - scroll, 1280, 2880 - scroll, image_back3, true);
+
 	stage.Draw(scroll);
 	player->Draw(scroll);
 }

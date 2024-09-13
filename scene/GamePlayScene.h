@@ -22,7 +22,9 @@ public: // �����o�֐�
 	Player* player = new Player();//player
 
 	float scroll; //スクロール座標
-	int image_back;//背景画像
+	int image_back1;//背景画像
+	int image_back2;//背景画像
+	int image_back3;//背景画像
 
 public: // メンバ関数
 	/// <summary>

@@ -7,7 +7,7 @@ void GameOverScene::Initialize()
 	menu_ = RETRY_STAGE;
 
 	// âÊëúÉfÅ[É^
-	bgGraph = LoadGraph("Resources/textures/select.png");
+	bgGraph = LoadGraph("Resources/textures/gameOver.png");
 	pGraph = LoadGraph("Resources/textures/yajirushi.png");
 	retryStageGraph = LoadGraph("Resources/textures/retry.png");
 	toSelectGraph = LoadGraph("Resources/textures/selectScene.png");
@@ -99,27 +99,27 @@ void GameOverScene::Draw()
 	switch (menu_)
 	{
 	case RETRY_STAGE:
-		DrawGraph(350, 325, pGraph, true);
+		DrawGraph(350, 425, pGraph, true);
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha_);
-		DrawGraph(0, 300, retryStageGraph, true);
+		DrawGraph(0, 400, retryStageGraph, true);
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-		DrawGraph(0, 400, toSelectGraph, true);
-		DrawGraph(0, 500, toTitleGraph, true);
+		DrawGraph(0, 500, toSelectGraph, true);
+		DrawGraph(0, 600, toTitleGraph, true);
 		break;
 	case RETURN_TO_STAGESELECT:
-		DrawGraph(350, 425, pGraph, true);
-		DrawGraph(0, 300, retryStageGraph, true);
+		DrawGraph(350, 525, pGraph, true);
+		DrawGraph(0, 400, retryStageGraph, true);
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha_);
-		DrawGraph(0, 400, toSelectGraph, true);
+		DrawGraph(0, 500, toSelectGraph, true);
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-		DrawGraph(0, 500, toTitleGraph, true);
+		DrawGraph(0, 600, toTitleGraph, true);
 		break;
 	case RETURN_TO_TITLE:
-		DrawGraph(350, 525, pGraph, true);
-		DrawGraph(0, 300, retryStageGraph, true);
-		DrawGraph(0, 400, toSelectGraph, true);
+		DrawGraph(350, 625, pGraph, true);
+		DrawGraph(0, 400, retryStageGraph, true);
+		DrawGraph(0, 500, toSelectGraph, true);
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha_);
-		DrawGraph(0, 500, toTitleGraph, true);
+		DrawGraph(0, 600, toTitleGraph, true);
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 		break;
 	}
