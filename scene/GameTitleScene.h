@@ -13,6 +13,10 @@ private: // メンバ変数
 	//BGMデータ
 	int titleBgmHandle_;
 
+	//アルファ値
+	int alpha_;
+	int add_;
+
 public: // メンバ関数
 	/// <summary>
 	/// 初期化
