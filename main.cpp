@@ -57,7 +57,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	sceneManager_->SetSceneFactory(sceneFactory_);
 
 	// シーンマネージャーに最初のシーンをセット
-	SceneManager::GetInstance()->ChangeScene("PLAY");
+	SceneManager::GetInstance()->ChangeScene("GAMEOVER");
 
 	// 最新のキーボード情報用
 	char keys[256] = { 0 };

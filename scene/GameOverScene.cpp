@@ -8,6 +8,9 @@ void GameOverScene::Initialize()
 
 	// 画像データ
 	bgGraph = LoadGraph("Resources/textures/select.png");
+	retryStageGraph = LoadGraph("Resources/textures/retry.png");
+	toSelectGraph = LoadGraph("Resources/textures/selectScene.png");
+	toTitleGraph = LoadGraph("Resources/textures/titleScene.png");
 	// 音声データ
 	overBgmHandle_ = LoadSoundMem("BGM/gameOver.mp3");
 	//seHandle = LoadSoundMem("Resources/sounds/.mp3");
@@ -78,6 +81,9 @@ void GameOverScene::Update(char keys[256], char oldkeys[256])
 void GameOverScene::Draw()
 {
 	DrawGraph(0, 0, bgGraph, true);
+	DrawGraph(0, 400, retryStageGraph, true);
+	DrawGraph(0, 500, toSelectGraph, true);
+	DrawGraph(0, 600, toTitleGraph, true);
 	// デバックテキスト
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "ゲームオーバーシーン");
 	DrawFormatString(0, 20, GetColor(255, 255, 255), "%d", menu_);

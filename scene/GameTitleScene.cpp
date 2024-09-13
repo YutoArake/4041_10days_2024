@@ -5,7 +5,8 @@ void GameTitleScene::Initialize()
 {
 	// 画像データ
 	titleGraph_ = LoadGraph("Resources/textures/title.png");
-	titleBgmHandle_ = LoadSoundMem("BGM/title.mp3"); //タイトルBGM
+	//タイトルBGM
+	titleBgmHandle_ = LoadSoundMem("BGM/title.mp3");
 }
 
 void GameTitleScene::Finalize()
@@ -24,8 +25,8 @@ void GameTitleScene::Update(char keys[256] , char oldkeys[256])
 	// シーン切り替え
 	if (keys[KEY_INPUT_RETURN] && !oldkeys[KEY_INPUT_RETURN])
 	{
-		// ステージセレクトへ
-		SceneManager::GetInstance()->ChangeScene("SELECT");
+		// 説明画面へ
+		SceneManager::GetInstance()->ChangeScene("DEMO");
 		//BGM停止
 		StopSoundMem(titleBgmHandle_);
 		return;

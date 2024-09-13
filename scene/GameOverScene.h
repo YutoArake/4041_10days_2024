@@ -19,6 +19,10 @@ private: // メンバ変数
 
 	// 画像データ
 	int bgGraph;
+	int retryStageGraph;
+	int toSelectGraph;
+	int toTitleGraph;
+
 	// 音データ
 	int overBgmHandle_;
 

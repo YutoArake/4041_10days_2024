@@ -17,9 +17,13 @@ private: // メンバ変数
 	// メニュー
 	int menu_;
 	const int MENU_MAX_NUM = 2;
+	bool isFainalStage;
 
 	// 画像データ
 	int bgGraph;
+	int nextStageGraph;
+	int toSelectGraph;
+	int toTitleGraph;
 
 	// 音データ
 	int clearBgmHandle_;
