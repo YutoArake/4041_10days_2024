@@ -8,6 +8,7 @@ void GameOverScene::Initialize()
 
 	// 画像データ
 	bgGraph = LoadGraph("Resources/textures/select.png");
+	pGraph = LoadGraph("Resources/textures/player.png");
 	retryStageGraph = LoadGraph("Resources/textures/retry.png");
 	toSelectGraph = LoadGraph("Resources/textures/selectScene.png");
 	toTitleGraph = LoadGraph("Resources/textures/titleScene.png");
@@ -30,14 +31,14 @@ void GameOverScene::Update(char keys[256], char oldkeys[256])
 	}
 
 	// メニュー切り替え
-	if (keys[KEY_INPUT_RIGHT] && !oldkeys[KEY_INPUT_RIGHT])
+	if (keys[KEY_INPUT_DOWN] && !oldkeys[KEY_INPUT_DOWN])
 	{
 		// インクリメント
 		menu_++;
 		// 値がメニュー数を超えないようにする
 		menu_ = std::min<int>(menu_, MENU_MAX_NUM);
 	}
-	if (keys[KEY_INPUT_LEFT] && !oldkeys[KEY_INPUT_LEFT])
+	if (keys[KEY_INPUT_UP] && !oldkeys[KEY_INPUT_UP])
 	{
 		// デクリメント
 		menu_--;
@@ -84,6 +85,12 @@ void GameOverScene::Draw()
 	DrawGraph(0, 400, retryStageGraph, true);
 	DrawGraph(0, 500, toSelectGraph, true);
 	DrawGraph(0, 600, toTitleGraph, true);
+	switch (menu_)
+	{
+	case RETRY_STAGE:						DrawGraph(350, 450, pGraph, true); break;
+	case RETURN_TO_STAGESELECT:	DrawGraph(350, 550, pGraph, true); break;
+	case RETURN_TO_TITLE:				DrawGraph(350, 650, pGraph, true); break;
+	}
 	// デバックテキスト
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "ゲームオーバーシーン");
 	DrawFormatString(0, 20, GetColor(255, 255, 255), "%d", menu_);
