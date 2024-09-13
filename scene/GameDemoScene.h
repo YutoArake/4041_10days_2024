@@ -7,8 +7,10 @@
 class GameDemoScene : public BaseScene
 {
 private: // メンバ変数
+	int page;
 	// 画像データ
-	int infoGraph_;
+	int infoGraph1_;
+	int infoGraph2_;
 	//BGMデータ
 	int titleBgmHandle_;
 

@@ -3,8 +3,10 @@
 
 void GameDemoScene::Initialize()
 {
+	page = 1;
 	// 画像データ
-	infoGraph_ = LoadGraph("Resources/textures/setumei.png");
+	infoGraph1_ = LoadGraph("Resources/textures/setumei.png");
+	infoGraph2_ = LoadGraph("Resources/textures/setumei.png");
 	//タイトルBGM
 	titleBgmHandle_ = LoadSoundMem("BGM/title.mp3");
 }
@@ -30,7 +32,7 @@ void GameDemoScene::Update(char keys[256], char oldkeys[256])
 		StopSoundMem(titleBgmHandle_);
 		return;
 	}
-	if (keys[KEY_INPUT_RETURN] && !oldkeys[KEY_INPUT_RETURN])
+	if (keys[KEY_INPUT_RETURN] && !oldkeys[KEY_INPUT_RETURN] && page == 2)
 	{
 		// ステージセレクトへ
 		SceneManager::GetInstance()->ChangeScene("SELECT");
@@ -38,10 +40,14 @@ void GameDemoScene::Update(char keys[256], char oldkeys[256])
 		StopSoundMem(titleBgmHandle_);
 		return;
 	}
+	else if (keys[KEY_INPUT_RETURN] && !oldkeys[KEY_INPUT_RETURN]) {
+		page = 2;
+	}
 }
 
 void GameDemoScene::Draw()
 {
 	DrawFormatString(0, 0, GetColor(255, 0, 0), "demo");
-	DrawGraph(0, 0, infoGraph_, false);
+	if (page == 1)DrawGraph(0, 0, infoGraph1_, false);
+	if (page == 2)DrawGraph(0, 0, infoGraph2_, false);
 }
