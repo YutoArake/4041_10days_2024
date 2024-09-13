@@ -15,6 +15,9 @@ void GameOverScene::Initialize()
 	// 音声データ
 	overBgmHandle_ = LoadSoundMem("BGM/gameOver.mp3");
 	//seHandle = LoadSoundMem("Resources/sounds/.mp3");
+
+	alpha_ = 255;
+	add_ = -5;
 }
 
 void GameOverScene::Finalize()
@@ -29,6 +32,16 @@ void GameOverScene::Update(char keys[256], char oldkeys[256])
 		//再生
 		PlaySoundMem(overBgmHandle_, DX_PLAYTYPE_BACK);
 	}
+
+	// 点滅
+	alpha_ += add_;
+
+	// アルファ値が 0 か 255 になったら変化の方向を反転する
+	if (alpha_ == 0 || alpha_ == 255)
+	{
+		add_ = -add_;
+	}
+
 
 	// メニュー切り替え
 	if (keys[KEY_INPUT_DOWN] && !oldkeys[KEY_INPUT_DOWN])
@@ -82,14 +95,33 @@ void GameOverScene::Update(char keys[256], char oldkeys[256])
 void GameOverScene::Draw()
 {
 	DrawGraph(0, 0, bgGraph, true);
-	DrawGraph(0, 400, retryStageGraph, true);
-	DrawGraph(0, 500, toSelectGraph, true);
-	DrawGraph(0, 600, toTitleGraph, true);
+	// 選択
 	switch (menu_)
 	{
-	case RETRY_STAGE:						DrawGraph(350, 425, pGraph, true); break;
-	case RETURN_TO_STAGESELECT:	DrawGraph(350, 525, pGraph, true); break;
-	case RETURN_TO_TITLE:				DrawGraph(350, 625, pGraph, true); break;
+	case RETRY_STAGE:
+		DrawGraph(350, 325, pGraph, true);
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha_);
+		DrawGraph(0, 300, retryStageGraph, true);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		DrawGraph(0, 400, toSelectGraph, true);
+		DrawGraph(0, 500, toTitleGraph, true);
+		break;
+	case RETURN_TO_STAGESELECT:
+		DrawGraph(350, 425, pGraph, true);
+		DrawGraph(0, 300, retryStageGraph, true);
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha_);
+		DrawGraph(0, 400, toSelectGraph, true);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		DrawGraph(0, 500, toTitleGraph, true);
+		break;
+	case RETURN_TO_TITLE:
+		DrawGraph(350, 525, pGraph, true);
+		DrawGraph(0, 300, retryStageGraph, true);
+		DrawGraph(0, 400, toSelectGraph, true);
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha_);
+		DrawGraph(0, 500, toTitleGraph, true);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		break;
 	}
 	// デバックテキスト
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "ゲームオーバーシーン");

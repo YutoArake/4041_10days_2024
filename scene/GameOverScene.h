@@ -17,6 +17,9 @@ private: // メンバ変数
 	int menu_;
 	const int MENU_MAX_NUM = 2;
 	int timer_;
+	//アルファ値
+	int alpha_;
+	int add_;
 
 	// 画像データ
 	int bgGraph;

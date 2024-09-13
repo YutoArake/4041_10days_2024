@@ -19,6 +19,9 @@ private: // メンバ変数
 	const int MENU_MAX_NUM = 2;
 	bool isFainalStage;
 	int timer_;
+	//アルファ値
+	int alpha_;
+	int add_;
 
 	// 画像データ
 	int bgGraph;
