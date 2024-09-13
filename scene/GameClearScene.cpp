@@ -14,7 +14,7 @@ void GameClearScene::Initialize()
 
 	// 画像データ
 	bgGraph = LoadGraph("Resources/textures/clear.png");
-	pGraph = LoadGraph("Resources/textures/player.png");
+	pGraph = LoadGraph("Resources/textures/yajirushi.png");
 	nextStageGraph = LoadGraph("Resources/textures/nextStage.png");
 	toSelectGraph = LoadGraph("Resources/textures/selectScene.png");
 	toTitleGraph = LoadGraph("Resources/textures/titleScene.png");
@@ -102,13 +102,13 @@ void GameClearScene::Update(char keys[256] , char oldkeys[256])
 void GameClearScene::Draw()
 {
 	DrawGraph(0, 0, bgGraph, true);
-	if(!isFainalStage) DrawGraph(0, 400, nextStageGraph, true);
-	DrawGraph(0, 500, toSelectGraph, true);
-	DrawGraph(0, 600, toTitleGraph, true);
+	if(!isFainalStage) DrawGraph(0, 300, nextStageGraph, true);
+	DrawGraph(0, 400, toSelectGraph, true);
+	DrawGraph(0, 500, toTitleGraph, true);
 	switch (menu_)
 	{
-	case NEXT_STAGE:							DrawGraph(350, 450, pGraph, true); break;
-	case RETURN_TO_STAGESELECT:	DrawGraph(350, 550, pGraph, true); break;
-	case RETURN_TO_TITLE:				DrawGraph(350, 650, pGraph, true); break;
+	case NEXT_STAGE:							DrawGraph(350, 325, pGraph, true); break;
+	case RETURN_TO_STAGESELECT:	DrawGraph(350, 425, pGraph, true); break;
+	case RETURN_TO_TITLE:				DrawGraph(350, 525, pGraph, true); break;
 	}
 }

@@ -8,7 +8,7 @@ void GameOverScene::Initialize()
 
 	// 画像データ
 	bgGraph = LoadGraph("Resources/textures/select.png");
-	pGraph = LoadGraph("Resources/textures/player.png");
+	pGraph = LoadGraph("Resources/textures/yajirushi.png");
 	retryStageGraph = LoadGraph("Resources/textures/retry.png");
 	toSelectGraph = LoadGraph("Resources/textures/selectScene.png");
 	toTitleGraph = LoadGraph("Resources/textures/titleScene.png");
@@ -87,9 +87,9 @@ void GameOverScene::Draw()
 	DrawGraph(0, 600, toTitleGraph, true);
 	switch (menu_)
 	{
-	case RETRY_STAGE:						DrawGraph(350, 450, pGraph, true); break;
-	case RETURN_TO_STAGESELECT:	DrawGraph(350, 550, pGraph, true); break;
-	case RETURN_TO_TITLE:				DrawGraph(350, 650, pGraph, true); break;
+	case RETRY_STAGE:						DrawGraph(350, 425, pGraph, true); break;
+	case RETURN_TO_STAGESELECT:	DrawGraph(350, 525, pGraph, true); break;
+	case RETURN_TO_TITLE:				DrawGraph(350, 625, pGraph, true); break;
 	}
 	// デバックテキスト
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "ゲームオーバーシーン");
