@@ -1,5 +1,45 @@
-meteor pos(-100 1000) rad(32) tag(item)
-meteor pos(1300 1000) rad(32) tag(item)
-meteor pos(600 1000) rad(32) tag(item)
-meteor pos(-100 -100) rad(32) tag(item)
-meteor pos(1300 -100) rad(32) tag(item)
+enemy pos(0 900) rad(30) type(1) tag(enemy)
+enemy pos(1279 1250) rad(30) type(3) tag(enemy)
+
+enemy pos(0 1600) rad(30) type(1) tag(enemy)
+enemy pos(1279 1950) rad(30) type(3) tag(enemy)
+
+enemy pos(0 2300) rad(30) type(1) tag(enemy)
+enemy pos(1279 2650) rad(30) type(3) tag(enemy)
+
+meteor pos(-30    -100) rad(32) type(2) tag(enemy)
+meteor pos(1500   -220) rad(32) type(2) tag(enemy)
+meteor pos(-600   -310) rad(32) type(2) tag(enemy)
+meteor pos(2000   -500) rad(32) type(2) tag(enemy)
+meteor pos(-1800 -700) rad(32) type(2) tag(enemy)
+
+
+
+
+meteor pos(-30   1500) rad(32) type(3) tag(enemy)
+meteor pos(1450  2000) rad(32) type(3) tag(enemy)
+//meteor pos(-30   2200) rad(32) type(3) tag(enemy)
+//meteor pos(1450  2400) rad(32) type(3) tag(enemy)
+meteor pos(-30   3000) rad(32) type(3) tag(enemy)
+meteor pos(1450  3400) rad(32) type(3) tag(enemy)
+meteor pos(-30   3700) rad(32) type(3) tag(enemy)
+meteor pos(1450  4000) rad(32) type(3) tag(enemy)
+meteor pos(-30   4200) rad(32) type(3) tag(enemy)
+meteor pos(1450  4300) rad(32) type(3) tag(enemy)
+
+
+
+//meteor pos(608  1500) rad(32) type(1) tag(enemy)
+meteor pos(288  1700) rad(32) type(1) tag(enemy)
+//meteor pos(928  1800) rad(32) type(1) tag(enemy)
+meteor pos(1184 2100) rad(32) type(1) tag(enemy)
+meteor pos(160  2300) rad(32) type(1) tag(enemy)
+meteor pos(480  2700) rad(32) type(1) tag(enemy)
+meteor pos(864  3000) rad(32) type(1) tag(enemy)
+meteor pos(352  3200) rad(32) type(1) tag(enemy)
+meteor pos(544  3400) rad(32) type(1) tag(enemy)
+meteor pos(1184 3700) rad(32) type(1) tag(enemy)
+meteor pos(416  3800) rad(32) type(1) tag(enemy)
+meteor pos(736  4000) rad(32) type(1) tag(enemy)
+meteor pos(160  4100) rad(32) type(1) tag(enemy)
+meteor pos(1056  4100) rad(32) type(1) tag(enemy)
