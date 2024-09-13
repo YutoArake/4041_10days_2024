@@ -9,8 +9,13 @@ class GameTitleScene : public BaseScene
 private: // メンバ変数
 	// 画像データ
 	int titleGraph_;
+	int pressEnterGraph_;
 	//BGMデータ
 	int titleBgmHandle_;
+
+	//アルファ値
+	int alpha_;
+	int add_;
 
 public: // メンバ関数
 	/// <summary>

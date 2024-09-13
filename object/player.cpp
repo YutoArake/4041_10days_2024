@@ -97,11 +97,11 @@ void Player::Move(char keys[256], float& scroll)
 
 #pragma region /*下にゆっくり*/
 	if (keys[KEY_INPUT_DOWN] == true) {
-		player_.Y += player_.FallSpeed * 2;
+		player_.Y += player_.FallSpeed * 5;
 
 		//スクロール加算
 		if (player_.Y >= 300 && player_.Y <= 2220) {
-			scroll += player_.FallSpeed * 2;
+			scroll += player_.FallSpeed * 5;
 		}
 
 		//画面から出ないように移動制御

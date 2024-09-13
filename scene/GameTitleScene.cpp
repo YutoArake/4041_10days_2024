@@ -3,10 +3,13 @@
 
 void GameTitleScene::Initialize()
 {
-	// âÊëúÉfÅ[É^
+	// ÁîªÂÉè„Éá„Éº„Çø
 	titleGraph_ = LoadGraph("Resources/textures/title.png");
-	//É^ÉCÉgÉãBGM
-	titleBgmHandle_ = LoadSoundMem("BGM/title.mp3");
+	pressEnterGraph_ = LoadGraph("Resources/textures/pressEnter.png");
+	titleBgmHandle_ = LoadSoundMem("BGM/title.mp3"); //„Çø„Ç§„Éà„É´BGM
+
+	alpha_ = 255;
+	add_ = -5;
 }
 
 void GameTitleScene::Finalize()
@@ -15,19 +18,29 @@ void GameTitleScene::Finalize()
 
 void GameTitleScene::Update(char keys[256] , char oldkeys[256])
 {
-	//BGMÇ™ñ¬Ç¡ÇƒÇ¢Ç»Ç©Ç¡ÇΩÇÁ
+	//BGM„ÅåÈ≥¥„Å£„Å¶„ÅÑ„Å™„Åã„Å£„Åü„Çâ
 	if (CheckSoundMem(titleBgmHandle_) == 0)
 	{
-		//çƒê∂
+		//ÂÜçÁîü
 		PlaySoundMem(titleBgmHandle_, DX_PLAYTYPE_BACK);
 	}
 	
-	// ÉVÅ[ÉìêÿÇËë÷Ç¶
+	//"press Enter"„ÇíÁÇπÊªÖ
+	alpha_ += add_;
+
+	// „Ç¢„É´„Éï„Ç°ÂÄ§„Åå 0 „Åã 255 „Å´„Å™„Å£„Åü„ÇâÂ§âÂåñ„ÅÆÊñπÂêë„ÇíÂèçËª¢„Åô„Çã
+	if (alpha_ == 0 || alpha_ == 255)
+	{
+		add_ = -add_;
+	}
+
+
+	// „Ç∑„Éº„É≥Âàá„ÇäÊõø„Åà
 	if (keys[KEY_INPUT_RETURN] && !oldkeys[KEY_INPUT_RETURN])
 	{
-		// ê‡ñæâÊñ Ç÷
+		// Ë™¨ÊòéÁîªÈù¢„Å∏
 		SceneManager::GetInstance()->ChangeScene("DEMO");
-		//BGMí‚é~
+		//BGMÂÅúÊ≠¢
 		StopSoundMem(titleBgmHandle_);
 		return;
 	}
@@ -36,4 +49,10 @@ void GameTitleScene::Update(char keys[256] , char oldkeys[256])
 void GameTitleScene::Draw()
 {
 	DrawGraph(0, 0, titleGraph_, false);
+
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha_);
+	DrawGraph(0, 750, pressEnterGraph_, true);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+	
 }
