@@ -7,18 +7,24 @@ void Meteor::Initialize(ObjectStatus status)
 	status_.X = status.X;
 	status_.Y = status.Y;
 	status_.R = status.R;
+	status_.type = status.type;
 	status_.Tag = status.Tag;
 
 	// •¦‚«êŠ
 	// ã
-	if (status_.Y < 0) {
+
+	if (status.type == 1)
+	{
+		pos = Posision::Under;
+	}
+	else if (status.type == 2 ) {
 		// ¶
 		if (status_.X < 32) pos = Posision::LeftTop;
 		// ‰E
 		else if (status_.X > 1248) pos = Posision::RightTop;
 	}
 	// ‰º
-	else if (status_.Y >= 1000) {
+	else if (status_.type == 3) {
 		pos = Posision::Under;
 		// ¶
 		if (status_.X < 32) pos = Posision::LeftUnder;
