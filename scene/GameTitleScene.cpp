@@ -5,6 +5,7 @@ void GameTitleScene::Initialize()
 {
 	// 画像データ
 	titleGraph_ = LoadGraph("Resources/textures/title.png");
+	pressEnterGraph_ = LoadGraph("Resources/textures/pressEnter.png");
 	titleBgmHandle_ = LoadSoundMem("BGM/title.mp3"); //タイトルBGM
 }
 
@@ -35,4 +36,5 @@ void GameTitleScene::Update(char keys[256] , char oldkeys[256])
 void GameTitleScene::Draw()
 {
 	DrawGraph(0, 0, titleGraph_, false);
+	DrawGraph(0, 750, pressEnterGraph_, true);
 }

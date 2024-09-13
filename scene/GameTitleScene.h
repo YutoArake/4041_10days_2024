@@ -9,6 +9,7 @@ class GameTitleScene : public BaseScene
 private: // メンバ変数
 	// 画像データ
 	int titleGraph_;
+	int pressEnterGraph_;
 	//BGMデータ
 	int titleBgmHandle_;
 
